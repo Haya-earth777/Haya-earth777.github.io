@@ -9,7 +9,7 @@ import SectionHead from './SectionHead.astro';
     {skills.map((row) => (
       <div class="grid grid-cols-[160px_minmax(0,1fr)] gap-6 items-center py-3.5 border-t border-line sp:grid-cols-[minmax(0,1fr)] sp:gap-0" data-line>
         <dt class="font-bold text-[14.5px]">{row.label}</dt>
-        {row.kind === 'chips' && <dd class="m-0 text-[15px] text-fg flex flex-wrap gap-2">{row.items.map((b) => <BrandChip brand={b} />)}</dd>}
+        {row.kind === 'chips' && <dd class="m-0 text-[15px] text-fg flex flex-wrap gap-2">{row.items.map((b) => <BrandChip brand={b} />)}{row.note && <span class="self-center text-[13.5px] text-muted">{row.note}</span>}</dd>}
         {row.kind === 'text' && <dd class="m-0 text-[15px] text-muted">{row.text}</dd>}
         {row.kind === 'certs' && (
           <dd class="m-0 text-[15px] text-muted grid gap-0.5">

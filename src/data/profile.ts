@@ -40,16 +40,20 @@ export const socials: Social[] = [
 ];
 
 export type SkillRow =
-  | { label: string; kind: 'chips'; items: Brand[] }
+  | { label: string; kind: 'chips'; items: Brand[]; /** チップの後ろに小さく添える補足 */ note?: string }
   | { label: string; kind: 'text'; text: string }
   | { label: string; kind: 'certs'; items: string[] };
 
 export const skills: SkillRow[] = [
   { label: '言語', kind: 'chips', items: [{ name: 'Ruby' }, { name: 'TypeScript' }] },
   { label: 'フレームワーク', kind: 'chips', items: [{ name: 'Ruby on Rails' }, { name: 'React' }, { name: 'Next.js' }] },
-  { label: 'テスト', kind: 'chips', items: [{ name: 'RSpec', mono: 'R' }, { name: 'Vitest' }, { name: 'Playwright', mono: 'P' }] },
-  { label: 'インフラ', kind: 'chips', items: [{ name: 'AWS' }] },
+  { label: 'テスト', kind: 'chips', items: [{ name: 'RSpec', mono: 'R' }, { name: 'Vitest' }, { name: 'Playwright', mono: 'P' }, { name: 'Autify', mono: 'A' }] },
+  { label: 'インフラ', kind: 'chips', items: [{ name: 'AWS' }], note: 'EC2 / RDS / Lambda / Glue / Athena' },
   { label: '運用・監視', kind: 'chips', items: [{ name: 'New Relic' }, { name: 'Datadog' }, { name: 'Rollbar', mono: 'R' }] },
+  {
+    label: '開発ツール', kind: 'chips',
+    items: [{ name: 'GitHub' }, { name: 'Slack', mono: 'S' }, { name: 'Notion' }, { name: 'Figma' }, { name: 'Jira' }],
+  },
   {
     label: 'AI ツール', kind: 'chips',
     items: [{ name: 'Cursor', mono: 'C' }, { name: 'Devin', mono: 'D' }, { name: 'Claude Code' }, { name: 'Codex' }, { name: 'CodeRabbit', mono: 'C' }],
