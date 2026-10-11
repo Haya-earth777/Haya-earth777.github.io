@@ -1,0 +1,18 @@
+---
+import { activities, type YearMonth } from '../data/profile';
+import { formatYM } from '../lib/timeline';
+
+const isYM = (v: string): v is YearMonth => /^\d{4}-\d{1,2}$/.test(v);
+---
+<section class="sec" aria-labelledby="h-acts">
+  <div class="sec-head"><h2 id="h-acts">活動</h2><p>登壇・制作・発信</p></div>
+  <ol class="acts" data-reveal>
+    {activities.map((a) => (
+      <li class="act">
+        {isYM(a.when) ? <time datetime={a.when}>{formatYM(a.when)}</time> : <span class="ongoing">{a.when}</span>}
+        <span class="kind"><svg class="ic" aria-hidden="true"><use href={`#i-${a.kind.icon}`} /></svg>{a.kind.label}</span>
+        <span class="what"><b>{a.title}</b>{a.text && <span>{a.text}</span>}</span>
+      </li>
+    ))}
+  </ol>
+</section>

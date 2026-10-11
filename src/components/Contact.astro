@@ -1,0 +1,24 @@
+---
+import { contactLinks, profile } from '../data/profile';
+import { brandIcons } from '../data/icons';
+---
+<section class="contact" aria-labelledby="h-contact">
+  <h2 class="say" id="h-contact" data-reveal>連絡先</h2>
+  <p data-reveal>お仕事のご相談やカジュアル面談など、お気軽にご連絡ください。</p>
+  <div class="contacts" data-reveal>
+    <button class="ct" id="copy-btn" type="button">
+      <span class="ct-ic" aria-hidden="true"><svg class="ic"><use href="#i-mail" /></svg></span>
+      <span class="ct-text"><b>メール</b><span id="email">{profile.email}</span></span>
+      <span class="ct-act" id="copy-state"><svg class="ic" aria-hidden="true"><use href="#i-copy" /></svg><span>コピー</span></span>
+    </button>
+    {contactLinks.map((c) => (
+      <a class="ct" href={c.url} target="_blank" rel="noopener noreferrer">
+        {c.mono
+          ? <span class="ct-ic mono" aria-hidden="true">{c.mono}</span>
+          : <span class="ct-ic" aria-hidden="true"><svg viewBox="0 0 24 24" class="brand"><path d={brandIcons[c.name]} /></svg></span>}
+        <span class="ct-text"><b>{c.name}</b><span>{c.sub}</span></span>
+        <span class="ct-act" aria-hidden="true">↗</span>
+      </a>
+    ))}
+  </div>
+</section>

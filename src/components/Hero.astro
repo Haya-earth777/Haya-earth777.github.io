@@ -1,0 +1,45 @@
+---
+import { profile, socials } from '../data/profile';
+import { brandIcons } from '../data/icons';
+import { existsSync } from 'node:fs';
+
+// public/avatar.jpg があるときだけアイコン画像を出す（ないときは頭文字）
+const hasAvatar = existsSync(new URL('../../public/avatar.jpg', import.meta.url));
+---
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-top">
+      <div class="hero-top-right">
+        <span class="avail">{profile.status}</span>
+        <button class="theme" id="theme-btn" type="button" aria-label="ライトとダークを切り替える">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+        </button>
+      </div>
+    </div>
+    <h1 class="big" aria-label={profile.name}>
+      <span class="line" aria-hidden="true"><span class="in">{profile.name}</span></span>
+    </h1>
+    <div class="hero-bottom">
+      <div class="me">
+        <div class="avatar">
+          <span aria-hidden="true">{profile.initials}</span>
+          {hasAvatar && <img src="avatar.jpg" alt={`${profile.name}のアイコン`} width="96" height="96" />}
+        </div>
+        <div>
+          <p class="jp-name">{profile.title}</p>
+          <p class="role">{profile.role}</p>
+          <p class="loc"><svg class="ic" aria-hidden="true"><use href="#i-pin" /></svg>{profile.location}</p>
+          <ul class="socials">
+            {socials.map((s) => (
+              <li><a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.name} title={s.name}>{s.mono
+                ? <span aria-hidden="true" class="ico mono">{s.mono}</span>
+                : <span aria-hidden="true" class="ico"><svg viewBox="0 0 24 24"><path d={brandIcons[s.name]} /></svg></span>}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <p class="bio">{profile.bio}</p>
+    </div>
+  </header>
+</div>

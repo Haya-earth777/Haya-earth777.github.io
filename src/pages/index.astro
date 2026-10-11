@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import Skills from '../components/Skills.astro';
+import Career from '../components/Career.astro';
+import Strengths from '../components/Strengths.astro';
+import Activities from '../components/Activities.astro';
+import Contact from '../components/Contact.astro';
+---
+<Base>
+  <Hero />
+  <main class="wrap">
+    <Skills />
+    <Career />
+    <Strengths />
+    <Activities />
+    <Contact />
+    <footer>
+      <span>© {new Date().getFullYear()} Haya</span>
+      <a class="totop" href="#">ページの先頭へ ↑</a>
+    </footer>
+  </main>
+</Base>

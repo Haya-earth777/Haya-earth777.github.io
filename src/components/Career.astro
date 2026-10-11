@@ -1,0 +1,71 @@
+---
+import { jobs, skills, type Brand } from '../data/profile';
+import { barOf, formatYM, nowClass, yearLabels } from '../lib/timeline';
+import BrandChip from './BrandChip.astro';
+
+// 技術タグは、スキル欄と同じロゴ・頭文字で表示する
+const brandByName = new Map<string, Brand>(
+  skills.flatMap((row) => (row.kind === 'chips' ? row.items : [])).map((b) => [b.name, b]),
+);
+const brand = (name: string): Brand => brandByName.get(name) ?? { name };
+
+const tracks = (['main', 'side'] as const).map((track) => ({
+  track,
+  label: track === 'main' ? '本業' : '副業',
+  jobs: jobs.filter((j) => j.track === track).sort((a, b) => a.start.localeCompare(b.start)),
+}));
+
+const ymJa = (ym: string) => {
+  const [y, m] = ym.split('-').map(Number);
+  return `${y}年${m}月`;
+};
+const chartLabel =
+  '2023年から現在までの職歴の期間。' +
+  tracks
+    .map((t) => `${t.label}は` + t.jobs.map((j) => `${j.short}（${ymJa(j.start)}〜${j.end ? ymJa(j.end) : '現在'}）`).join('と'))
+    .join('。') +
+  '。';
+---
+<section class="sec" aria-labelledby="h-works">
+  <div class="sec-head"><h2 id="h-works">職歴</h2></div>
+  <div>
+    <div class="chart" data-reveal role="img" aria-label={chartLabel}>
+      {tracks.map((t, i) => <span class={`track-name r${i + 1}`}>{t.label}</span>)}
+      <div class="gridlines" aria-hidden="true"></div>
+      {tracks.map((t, i) => (
+        <div class={`track r${i + 1}`}>
+          {t.jobs.map((j) => {
+            const bar = barOf(j);
+            return (
+              <a class:list={['bar', t.track === 'main' ? 'main' : 'sub', { tiny: bar.tiny }, bar.className]} href={`#${j.id}`}>
+                <span class="name">{j.short}</span>
+              </a>
+            );
+          })}
+        </div>
+      ))}
+      <div class={`now-line ${nowClass}`} aria-hidden="true"></div>
+      <div class="years" aria-hidden="true">
+        {yearLabels.map((y) => <span class={y.className}>{y.year}</span>)}
+        <span class={`now-label ${nowClass}`}>現在</span>
+      </div>
+    </div>
+    <ol class="history" data-reveal>
+      {jobs.map((j) => (
+        <li class="xp" id={j.id}>
+          <div class="xp-when">
+            <span class="period">{formatYM(j.start)} <i>〜</i> {j.end ? formatYM(j.end) : '現在'}</span>
+            {j.end === null && <span class="tag now">在籍中</span>}
+            {j.track === 'side' && <span class="tag side">副業</span>}
+          </div>
+          <div class="xp-body">
+            <h3>{j.company}<small>{j.role}</small></h3>
+            <p class="xp-about">{j.about}</p>
+            <ul>{j.achievements.map((a) => <li>{a}</li>)}</ul>
+            <p class="xp-tags">{j.tech.map((name) => <BrandChip brand={brand(name)} />)}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

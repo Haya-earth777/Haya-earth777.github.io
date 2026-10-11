@@ -1,0 +1,21 @@
+# 依存パッケージと GitHub Actions の更新・脆弱性を、毎週チェックして知らせる
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      astro:
+        patterns: ['astro', '@astrojs/*']
+    ignore:
+      # 型定義は、実際に動かしている Node.js（22）のメジャーバージョンに合わせる
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      # 型チェックのツール（@astrojs/check）が対応するまで、TypeScript のメジャー更新は見送る
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

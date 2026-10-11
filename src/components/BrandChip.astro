@@ -1,0 +1,12 @@
+---
+// スキルや職歴の技術タグ。ロゴがあればロゴ、なければ頭文字を表示する
+import type { Brand } from '../data/profile';
+import { brandIcons } from '../data/icons';
+
+interface Props {
+  brand: Brand;
+}
+const { brand } = Astro.props;
+const d = brand.mono ? undefined : brandIcons[brand.name];
+---
+<span class="sk">{d ? <svg viewBox="0 0 24 24" aria-hidden="true"><path d={d} /></svg> : <i aria-hidden="true">{brand.mono ?? brand.name.charAt(0)}</i>}{brand.name}</span>

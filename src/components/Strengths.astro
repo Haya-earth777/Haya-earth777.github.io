@@ -1,0 +1,14 @@
+---
+import { strengths } from '../data/profile';
+---
+<section class="sec" aria-labelledby="h-goods">
+  <div class="sec-head"><h2 id="h-goods">得意なこと</h2></div>
+  <div class="goods">
+    {strengths.map((s) => (
+      <div class="good" data-reveal>
+        <h3><svg class="ic" aria-hidden="true"><use href={`#i-${s.icon}`} /></svg>{s.title}</h3>
+        <p>{s.text}</p>
+      </div>
+    ))}
+  </div>
+</section>

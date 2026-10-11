@@ -1,0 +1,17 @@
+---
+import { skills } from '../data/profile';
+import BrandChip from './BrandChip.astro';
+---
+<section class="sec" aria-labelledby="h-tools">
+  <div class="sec-head"><h2 id="h-tools">スキル</h2></div>
+  <dl class="tools" data-reveal>
+    {skills.map((row) => (
+      <div>
+        <dt>{row.label}</dt>
+        {row.kind === 'chips' && <dd class="chips">{row.items.map((b) => <BrandChip brand={b} />)}</dd>}
+        {row.kind === 'text' && <dd>{row.text}</dd>}
+        {row.kind === 'certs' && <dd class="certs">{row.items.map((c) => <span><svg class="ic" aria-hidden="true"><use href="#i-award" /></svg>{c}</span>)}</dd>}
+      </div>
+    ))}
+  </dl>
+</section>

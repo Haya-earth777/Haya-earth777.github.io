@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;800&display=block">
+<style>
+  /* OGP 画像（1200×630）。ページのヒーローと同じ配色・書体 */
+  html, body { margin: 0; }
+  body { width: 1200px; height: 630px; background: #f7f6f2; color: #121212; font-family: "Hiragino Sans", "Noto Sans CJK JP", "Noto Sans JP", sans-serif; position: relative; overflow: hidden; }
+  .wrap { position: absolute; inset: 72px 80px; display: flex; flex-direction: column; justify-content: space-between; }
+  .top { display: flex; justify-content: space-between; font-size: 24px; color: #6d6d68; }
+  .top b { display: inline-flex; align-items: center; gap: 12px; color: #121212; font-weight: 500; }
+  .top b::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: #2f6b4f; }
+  h1 { margin: 0; font-family: "Outfit", sans-serif; font-weight: 800; font-size: 150px; line-height: .92; letter-spacing: -0.035em; }
+  h1 span { color: #2f6b4f; }
+  .bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; }
+  .jp { font-size: 40px; font-weight: 700; letter-spacing: .08em; }
+  .role { margin-top: 6px; font-size: 26px; color: #6d6d68; }
+  .stack { display: flex; gap: 10px; }
+  .stack span { font-family: "Outfit", sans-serif; font-weight: 600; font-size: 22px; padding: 8px 18px; border-radius: 999px; border: 2px solid #dedcd5; background: #fff; }
+  .bar { position: absolute; left: 0; right: 0; bottom: 0; height: 14px; background: #2f6b4f; }
+</style></head>
+<body>
+  <div class="wrap">
+    <div class="top"><span>Portfolio</span><b>カジュアル面談歓迎</b></div>
+    <h1>Haya</h1>
+    <div class="bottom">
+      <div><div class="jp">フルスタックエンジニア</div><div class="role">Full-stack Engineer</div></div>
+      <div class="stack"><span>Ruby on Rails</span><span>TypeScript</span><span>React</span><span>Next.js</span></div>
+    </div>
+  </div>
+  <div class="bar"></div>
+</body></html>
