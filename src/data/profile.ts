@@ -171,8 +171,8 @@ export const strengths: Strength[] = [
 ];
 
 export interface Activity {
-  /** 年月が分かるものは YearMonth、分からないものは「継続中」などの表示文字 */
-  when: YearMonth | string;
+  /** 年月（"2026-06"）か、月が分からないものは年だけ（"2024"）。一覧は新しい順に自動で並ぶ */
+  when: YearMonth | `${number}`;
   kind: { label: string; icon: LineIcon };
   title: string;
   text?: string;
@@ -188,13 +188,13 @@ const kinds = {
 
 export const activities: Activity[] = [
   { when: '2026-10', kind: kinds.make, title: 'このポートフォリオサイトを制作', text: 'Astro と TypeScript で作成し、GitHub Actions で GitHub Pages に自動公開。View Transitions API などの新しいブラウザ機能も取り入れています' },
-  { when: '副業', kind: kinds.make, title: 'ベンチャー企業のホームページを立ち上げ', text: '副業として、企業サイトの立ち上げを担当' },
+  { when: '2024', kind: kinds.make, title: 'ベンチャー企業のホームページを立ち上げ', text: '副業として、企業サイトの立ち上げを担当' },
   { when: '2026-06', kind: kinds.talk, title: 'エンジニア向けの共催イベントに登壇' },
-  { when: '実績', kind: kinds.write, title: 'Qiita のトレンドで 2 位を獲得', text: '技術記事が 120 以上のいいねを集め、トレンドランキングで 2 位に' },
-  { when: '継続中', kind: kinds.write, title: 'テックブログ・技術記事の執筆', text: '勤務先のテックブログ、Zenn、Speaker Deck などで発信' },
-  { when: '継続中', kind: kinds.talk, title: 'LT 会・座談会・協賛イベントでの登壇', text: '採用広報も兼ねて、社外のイベントで登壇' },
-  { when: '継続中', kind: kinds.host, title: 'ユーザーインタビュー・顧客理解の勉強会を主催', text: 'チーム全体でドメインと顧客への理解を深める取り組み' },
-  { when: '継続中', kind: kinds.team, title: '雑談の場「Coffee Chat」を導入', text: 'チームの心理的安全性を高めるための取り組み' },
+  { when: '2024', kind: kinds.write, title: 'Qiita のトレンドで 2 位を獲得', text: '技術記事が 120 以上のいいねを集め、トレンドランキングで 2 位に' },
+  { when: '2023', kind: kinds.write, title: 'テックブログ・技術記事の執筆', text: '勤務先のテックブログ、Zenn、Speaker Deck などで発信' },
+  { when: '2024', kind: kinds.talk, title: 'LT 会・座談会・協賛イベントでの登壇', text: '採用広報も兼ねて、社外のイベントで登壇' },
+  { when: '2025', kind: kinds.host, title: 'ユーザーインタビュー・顧客理解の勉強会を主催', text: 'チーム全体でドメインと顧客への理解を深める取り組み' },
+  { when: '2024', kind: kinds.team, title: '雑談の場「Coffee Chat」を導入', text: 'チームの心理的安全性を高めるための取り組み' },
 ];
 
 export interface ContactLink extends Brand {
