@@ -182,8 +182,6 @@ const kinds = {
   make: { label: '制作', icon: 'monitor' },
   talk: { label: '登壇', icon: 'mic' },
   write: { label: '執筆', icon: 'pen' },
-  host: { label: '主催', icon: 'users' },
-  team: { label: 'チーム', icon: 'coffee' },
 } as const satisfies Record<string, Activity['kind']>;
 
 export const activities: Activity[] = [
@@ -193,8 +191,6 @@ export const activities: Activity[] = [
   { when: '2024', kind: kinds.write, title: 'Qiita のトレンドで 2 位を獲得', text: '技術記事が 120 以上のいいねを集め、トレンドランキングで 2 位に' },
   { when: '2023', kind: kinds.write, title: 'テックブログ・技術記事の執筆', text: '勤務先のテックブログ、Zenn、Speaker Deck などで発信' },
   { when: '2024', kind: kinds.talk, title: 'LT 会・座談会・協賛イベントでの登壇', text: '採用広報も兼ねて、社外のイベントで登壇' },
-  { when: '2025', kind: kinds.host, title: 'ユーザーインタビュー・顧客理解の勉強会を主催', text: 'チーム全体でドメインと顧客への理解を深める取り組み' },
-  { when: '2024', kind: kinds.team, title: '雑談の場「Coffee Chat」を導入', text: 'チームの心理的安全性を高めるための取り組み' },
 ];
 
 export interface ContactLink extends Brand {
