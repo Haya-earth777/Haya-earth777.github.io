@@ -1,16 +1,21 @@
 ---
 import { skills } from '../data/profile';
 import BrandChip from './BrandChip.astro';
+import SectionHead from './SectionHead.astro';
 ---
-<section class="sec" aria-labelledby="h-tools">
-  <div class="sec-head"><h2 id="h-tools">スキル</h2></div>
-  <dl class="tools" data-reveal>
+<section class="grid grid-cols-[220px_minmax(0,1fr)] gap-12 py-[88px] border-t border-line tab:grid-cols-[minmax(0,1fr)] tab:gap-7 tab:py-16" aria-labelledby="h-tools">
+  <SectionHead id="h-tools" title="スキル" />
+  <dl class="m-0 grid" data-reveal>
     {skills.map((row) => (
-      <div>
-        <dt>{row.label}</dt>
-        {row.kind === 'chips' && <dd class="chips">{row.items.map((b) => <BrandChip brand={b} />)}</dd>}
-        {row.kind === 'text' && <dd>{row.text}</dd>}
-        {row.kind === 'certs' && <dd class="certs">{row.items.map((c) => <span><svg class="ic" aria-hidden="true"><use href="#i-award" /></svg>{c}</span>)}</dd>}
+      <div class="grid grid-cols-[160px_minmax(0,1fr)] gap-6 items-center py-3.5 border-t border-line last:border-b sp:grid-cols-[minmax(0,1fr)] sp:gap-0">
+        <dt class="font-bold text-[14.5px]">{row.label}</dt>
+        {row.kind === 'chips' && <dd class="m-0 text-[15px] text-fg flex flex-wrap gap-2">{row.items.map((b) => <BrandChip brand={b} />)}</dd>}
+        {row.kind === 'text' && <dd class="m-0 text-[15px] text-muted">{row.text}</dd>}
+        {row.kind === 'certs' && (
+          <dd class="m-0 text-[15px] text-muted grid gap-0.5">
+            {row.items.map((c) => <span class="flex items-center gap-2"><svg class="ic w-4 h-4 text-accent" aria-hidden="true"><use href="#i-award" /></svg>{c}</span>)}
+          </dd>
+        )}
       </div>
     ))}
   </dl>

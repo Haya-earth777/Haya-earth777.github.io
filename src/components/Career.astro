@@ -1,7 +1,8 @@
 ---
 import { jobs, skills, type Brand } from '../data/profile';
-import { barOf, formatYM, nowClass, yearLabels } from '../lib/timeline';
+import { barOf, formatYM, nowLabelClass, nowLineClass, yearLabels } from '../lib/timeline';
 import BrandChip from './BrandChip.astro';
+import SectionHead from './SectionHead.astro';
 
 // 技術タグは、スキル欄と同じロゴ・頭文字で表示する
 const brandByName = new Map<string, Brand>(
@@ -25,44 +26,66 @@ const chartLabel =
     .map((t) => `${t.label}は` + t.jobs.map((j) => `${j.short}（${ymJa(j.start)}〜${j.end ? ymJa(j.end) : '現在'}）`).join('と'))
     .join('。') +
   '。';
+
+// 段（本業・副業）の行番号
+const rowClass = ['row-[1]', 'row-[2]'];
+// バーが左から伸びる順番（1段目の1本目 → 2本目 → 2段目の1本目 → 2本目）
+const barTransition = [
+  '[transition:transform_1.1s_var(--ease-soft),filter_.2s]',
+  '[transition:transform_1.1s_var(--ease-soft)_.2s,filter_.2s_.2s]',
+  '[transition:transform_1.1s_var(--ease-soft)_.4s,filter_.2s_.4s]',
+  '[transition:transform_1.1s_var(--ease-soft)_.55s,filter_.2s_.55s]',
+];
 ---
-<section class="sec" aria-labelledby="h-works">
-  <div class="sec-head"><h2 id="h-works">職歴</h2></div>
+<section class="grid grid-cols-[220px_minmax(0,1fr)] gap-12 py-[88px] border-t border-line tab:grid-cols-[minmax(0,1fr)] tab:gap-7 tab:py-16" aria-labelledby="h-works">
+  <SectionHead id="h-works" title="職歴" />
   <div>
-    <div class="chart" data-reveal role="img" aria-label={chartLabel}>
-      {tracks.map((t, i) => <span class={`track-name r${i + 1}`}>{t.label}</span>)}
-      <div class="gridlines" aria-hidden="true"></div>
+    <div class="group/chart grid grid-cols-[36px_minmax(0,1fr)] grid-rows-[30px_30px_20px] gap-x-3.5 gap-y-2 mb-10 sp:grid-cols-[28px_minmax(0,1fr)] sp:gap-2" data-reveal role="img" aria-label={chartLabel}>
+      {tracks.map((t, i) => <span class:list={['text-[12px] font-bold text-muted self-center', rowClass[i]]}>{t.label}</span>)}
+      <div class="col-[2] row-[1/3] bg-[repeating-linear-gradient(90deg,var(--color-line)_0_1px,transparent_1px_25%)]" aria-hidden="true"></div>
       {tracks.map((t, i) => (
-        <div class={`track r${i + 1}`}>
-          {t.jobs.map((j) => {
+        <div class:list={['col-[2] grid grid-cols-[repeat(48,minmax(0,1fr))]', rowClass[i]]}>
+          {t.jobs.map((j, k) => {
             const bar = barOf(j);
             return (
-              <a class:list={['bar', t.track === 'main' ? 'main' : 'sub', { tiny: bar.tiny }, bar.className]} href={`#${j.id}`}>
-                <span class="name">{j.short}</span>
+              <a
+                class:list={[
+                  'bar row-[1] relative flex items-center rounded-full text-[12px] font-bold origin-left cursor-pointer hover:brightness-[1.15] active:brightness-[1.2] group-[.pre]/chart:[transform:scaleX(0)] sp:text-[11px]',
+                  barTransition[i * 2 + k],
+                  t.track === 'main' ? 'bg-fg text-bg' : 'bg-accent-soft text-accent shadow-[inset_0_0_0_1.5px_var(--color-accent)]',
+                  { 'ml-[3px]': t.track === 'main' && k > 0 },
+                  bar.className,
+                ]}
+                href={`#${j.id}`}
+              >
+                <span class:list={[
+                  'whitespace-nowrap text-ellipsis',
+                  bar.tiny ? 'absolute right-full pr-2 text-accent overflow-visible' : 'px-2.5 overflow-hidden sp:px-1.5',
+                ]}>{j.short}</span>
               </a>
             );
           })}
         </div>
       ))}
-      <div class={`now-line ${nowClass}`} aria-hidden="true"></div>
-      <div class="years" aria-hidden="true">
-        {yearLabels.map((y) => <span class={y.className}>{y.year}</span>)}
-        <span class={`now-label ${nowClass}`}>現在</span>
+      <div class:list={["col-[2] row-[1/4] relative pointer-events-none before:content-[''] before:absolute before:top-[-6px] before:bottom-4 before:[border-left:1.5px_dashed_var(--color-fg)] before:opacity-50", nowLineClass]} aria-hidden="true"></div>
+      <div class="col-[2] row-[3] relative text-[11.5px] text-muted tabular-nums" aria-hidden="true">
+        {yearLabels.map((y) => <span class:list={['absolute top-0 whitespace-nowrap', y.className]}>{y.year}</span>)}
+        <span class:list={['absolute top-0 whitespace-nowrap -translate-x-1/2 text-fg font-bold', nowLabelClass]}>現在</span>
       </div>
     </div>
-    <ol class="history" data-reveal>
+    <ol class="list-none m-0 p-0 border-t border-fg" data-reveal>
       {jobs.map((j) => (
-        <li class="xp" id={j.id}>
-          <div class="xp-when">
-            <span class="period">{formatYM(j.start)} <i>〜</i> {j.end ? formatYM(j.end) : '現在'}</span>
-            {j.end === null && <span class="tag now">在籍中</span>}
-            {j.track === 'side' && <span class="tag side">副業</span>}
+        <li class="grid grid-cols-[190px_minmax(0,1fr)] gap-6 py-7 border-b border-line scroll-mt-6 [&.flash]:animate-[flash_1.2s_var(--ease-soft)] sp:grid-cols-[minmax(0,1fr)] sp:gap-2.5 sp:py-6" id={j.id}>
+          <div class="flex flex-wrap content-start items-center gap-2">
+            <span class="w-full font-display font-semibold text-[17px] tabular-nums tracking-[0.01em] sp:w-auto sp:text-[15.5px]">{formatYM(j.start)} <i class="not-italic text-muted font-medium">〜</i> {j.end ? formatYM(j.end) : '現在'}</span>
+            {j.end === null && <span class="text-[12px] font-bold py-px px-2.5 rounded-full whitespace-nowrap bg-accent text-bg">在籍中</span>}
+            {j.track === 'side' && <span class="text-[12px] font-bold py-px px-2.5 rounded-full whitespace-nowrap text-accent shadow-[inset_0_0_0_1px_var(--color-accent)]">副業</span>}
           </div>
-          <div class="xp-body">
-            <h3>{j.company}<small>{j.role}</small></h3>
-            <p class="xp-about">{j.about}</p>
-            <ul>{j.achievements.map((a) => <li>{a}</li>)}</ul>
-            <p class="xp-tags">{j.tech.map((name) => <BrandChip brand={brand(name)} />)}</p>
+          <div class="grid gap-2.5 min-w-0">
+            <h3 class="m-0 text-[18px] font-bold leading-[1.5]">{j.company}<small class="block text-[13.5px] font-medium text-muted">{j.role}</small></h3>
+            <p class="m-0 text-[15px]">{j.about}</p>
+            <ul class="m-0 pl-[1.1em] grid gap-1 text-[14.5px] text-muted marker:text-accent">{j.achievements.map((a) => <li>{a}</li>)}</ul>
+            <p class="mt-1 mb-0 mx-0 flex flex-wrap gap-1.5">{j.tech.map((name) => <BrandChip brand={brand(name)} size="sm" />)}</p>
           </div>
         </li>
       ))}

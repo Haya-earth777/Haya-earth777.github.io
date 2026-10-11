@@ -27,20 +27,29 @@ export const formatYM = (ym: YearMonth) => {
 
 /*
  * 年表の位置は、CSP（Content Security Policy）で style 属性を禁止しているため、
- * global.css にあらかじめ用意したクラス（cs-* / ce-* / at-* / yl-*）で指定する。
+ * Tailwind のクラスで指定する（使う可能性のあるクラスは global.css の @source inline で生成済み）。
  */
 
 /** 年表のバーの位置のクラスと、細いバーかどうか */
 export const barOf = (job: Job) => {
   const from = column(job.start);
   const to = column(job.chartEnd ?? job.end ?? nowYM) + 1;
-  return { className: `cs-${from} ce-${to}`, tiny: to - from <= 3 };
+  return { className: `col-start-${from} col-end-${to}`, tiny: to - from <= 3 };
 };
 
-/** "現在" の線とラベルの位置のクラス */
-export const nowClass = `at-${Math.min(Math.max(column(nowYM), 1), totalMonths)}`;
+/** "現在" の位置（%）。Artifact 版と同じく小数第 2 位で切り捨てる */
+const nowPercent = (() => {
+  const col = Math.min(Math.max(column(nowYM), 1), totalMonths);
+  return `${(Math.floor((col / totalMonths) * 10000) / 100).toFixed(2).replace(/\.?0+$/, '')}%`;
+})();
+
+/** "現在" の線（疑似要素）とラベルの位置のクラス */
+export const nowLineClass = `before:left-[${nowPercent}]`;
+export const nowLabelClass = `left-[${nowPercent}]`;
+
+const yearLeft = ['left-0', 'left-1/4', 'left-1/2', 'left-3/4'];
 
 export const yearLabels = Array.from({ length: chartYears }, (_, i) => ({
   year: chartStartYear + i,
-  className: `yl-${i}`,
+  className: yearLeft[i] ?? 'left-0',
 }));

@@ -6,40 +6,54 @@ import { existsSync } from 'node:fs';
 // public/avatar.jpg があるときだけアイコン画像を出す（ないときは頭文字）
 const hasAvatar = existsSync(new URL('../../public/avatar.jpg', import.meta.url));
 ---
-<div class="wrap">
-  <header class="hero">
-    <div class="hero-top">
-      <div class="hero-top-right">
-        <span class="avail">{profile.status}</span>
-        <button class="theme" id="theme-btn" type="button" aria-label="ライトとダークを切り替える">
-          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
-          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+<div class="max-w-[1120px] mx-auto">
+  <header class="grid gap-12 pt-8 pb-[72px] sp:gap-8 sp:pt-6 sp:pb-12">
+    <div class="flex justify-between items-center gap-4 flex-wrap text-[13px] text-muted animate-[fadeUp_.8s_var(--ease-soft)_.35s_both]">
+      <div class="flex items-center gap-5 ml-auto sp:gap-3">
+        <span class="inline-flex items-center gap-2 text-fg before:content-[''] before:w-2 before:h-2 before:rounded-full before:bg-accent">{profile.status}</span>
+        <button
+          class="theme w-[38px] h-[38px] rounded-full border border-line bg-transparent text-fg cursor-pointer grid place-items-center [transition:border-color_.2s,transform_.2s_var(--ease-soft)] hover:border-fg active:[transform:scale(.9)] [&.spin_svg]:animate-[themeSpin_.6s_var(--ease-soft)]"
+          id="theme-btn"
+          type="button"
+          aria-label="ライトとダークを切り替える"
+        >
+          <svg class="w-[18px] h-[18px] mode-dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg>
+          <svg class="w-[18px] h-[18px] hidden mode-dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
         </button>
       </div>
     </div>
-    <h1 class="big" aria-label={profile.name}>
-      <span class="line" aria-hidden="true"><span class="in">{profile.name}</span></span>
+    <h1 class="m-0 font-display font-extrabold text-[clamp(56px,13vw,168px)] leading-[0.95] tracking-[-0.035em]" aria-label={profile.name}>
+      <span class="block overflow-hidden pb-[0.06em]" aria-hidden="true"><span class="inline-block animate-[rise_.9s_var(--ease-soft)_both]">{profile.name}</span></span>
     </h1>
-    <div class="hero-bottom">
-      <div class="me">
-        <div class="avatar">
+    <div class="grid grid-cols-[1fr_1.4fr] gap-10 items-end tab:grid-cols-[minmax(0,1fr)] tab:gap-5">
+      <div class="flex items-center gap-5 sp:gap-4">
+        <div class="relative flex-none w-24 h-24 rounded-full overflow-hidden bg-accent-soft text-accent grid place-items-center font-display font-bold text-[30px] tracking-[0.02em] shadow-[0_0_0_1px_var(--color-line)] animate-[fadeUp_.8s_var(--ease-soft)_.4s_both] sp:w-[72px] sp:h-[72px] sp:text-[22px]">
           <span aria-hidden="true">{profile.initials}</span>
-          {hasAvatar && <img src="avatar.jpg" alt={`${profile.name}のアイコン`} width="96" height="96" />}
+          {hasAvatar && <img class="absolute inset-0 w-full h-full object-cover" src="avatar.jpg" alt={`${profile.name}のアイコン`} width="96" height="96" />}
         </div>
         <div>
-          <p class="jp-name">{profile.title}</p>
-          <p class="role">{profile.role}</p>
-          <p class="loc"><svg class="ic" aria-hidden="true"><use href="#i-pin" /></svg>{profile.location}</p>
-          <ul class="socials">
+          <p class="m-0 text-[22px] font-bold tracking-[0.08em] animate-[fadeUp_.8s_var(--ease-soft)_.45s_both]">{profile.title}</p>
+          <p class="m-0 text-[14px] text-muted animate-[fadeUp_.8s_var(--ease-soft)_.55s_both]">{profile.role}</p>
+          <p class="mt-1 mb-0 mx-0 flex items-center gap-1.5 text-[13.5px] text-muted animate-[fadeUp_.8s_var(--ease-soft)_.6s_both]"><svg class="ic w-[15px] h-[15px]" aria-hidden="true"><use href="#i-pin" /></svg>{profile.location}</p>
+          <ul class="list-none mt-2.5 mb-0 mx-0 p-0 flex flex-wrap gap-2 animate-[fadeUp_.8s_var(--ease-soft)_.6s_both] sp:gap-1.5">
             {socials.map((s) => (
-              <li><a href={s.url} target="_blank" rel="noopener noreferrer" aria-label={s.name} title={s.name}>{s.mono
-                ? <span aria-hidden="true" class="ico mono">{s.mono}</span>
-                : <span aria-hidden="true" class="ico"><svg viewBox="0 0 24 24"><path d={brandIcons[s.name]} /></svg></span>}</a></li>
+              <li>
+                <a
+                  class="w-9 h-9 rounded-full border border-line grid place-items-center text-fg [transition:background_.25s,color_.25s,border-color_.25s,transform_.3s_var(--ease-soft)] hover:bg-fg hover:text-bg hover:border-fg hover:[transform:translateY(-2px)] active:[transform:scale(.9)] sp:w-8 sp:h-8"
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.name}
+                  title={s.name}
+                >{s.mono
+                  ? <span aria-hidden="true" class="grid place-items-center font-display font-bold text-[14px] leading-none">{s.mono}</span>
+                  : <span aria-hidden="true" class="grid place-items-center"><svg class="w-4 h-4 fill-current sp:w-3.5 sp:h-3.5" viewBox="0 0 24 24"><path d={brandIcons[s.name]} /></svg></span>}</a>
+              </li>
             ))}
           </ul>
         </div>
       </div>
-      <p class="bio">{profile.bio}</p>
+      <p class="m-0 text-[15.5px] max-w-[32em] animate-[fadeUp_.8s_var(--ease-soft)_.65s_both]">{profile.bio}</p>
     </div>
   </header>
 </div>

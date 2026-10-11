@@ -10,7 +10,7 @@ https://haya-earth777.github.io/
 | --- | --- |
 | フレームワーク | [Astro](https://astro.build/)（静的サイトとして出力） |
 | 言語 | TypeScript（strict） |
-| スタイル | 素の CSS（CSS 変数でライト／ダークを切り替え） |
+| スタイル | [Tailwind CSS](https://tailwindcss.com/) v4（色や書体は `@theme` で定義し、ライト／ダークは CSS 変数で切り替え） |
 | 公開 | GitHub Actions → GitHub Pages |
 
 静的なページなので、JavaScript のフレームワークを使わずに Astro で HTML を書き出しています。ページの動きは `src/scripts/main.ts` の小さなスクリプトだけです。
@@ -35,7 +35,7 @@ src/
   components/          各セクションの部品
   layouts/Base.astro   <head> とページ全体の枠
   scripts/main.ts      ページの動き
-  styles/global.css    スタイル
+  styles/global.css    デザインの値（色・書体）と、クラスでは書けないスタイル
 public/                画像など（og.png はリンクを共有したときのカード画像）
 og/og.html             og.png の元になる HTML
 ```
@@ -51,6 +51,8 @@ npm run build    # 型チェックをしてから dist/ に書き出し
 ```
 
 ## 工夫していること
+
+- **スタイルは Tailwind のクラスで書く**：見た目の指定は各コンポーネントのクラスにまとめ、`global.css` には色・書体などのデザインの値と、アニメーションの定義など、クラスでは書けないものだけを置いています。ブラウザ標準の見た目を前提にデザインしているため、Tailwind のリセット CSS（preflight）は読み込んでいません。
 
 - **スマホでカクつかないこと**：スクロールに合わせて動く演出（表示アニメーション、進捗バー、追従カーソル）は、マウス操作の PC でだけ動かしています。スマホで動くのは、読み込み時やタップしたときに 1 回だけ動くものに限っています。
 - **ライト／ダーク切り替え**：View Transitions API で、ボタンを中心に円が広がるように切り替えます（対応していないブラウザでは、すぐに切り替わります）。

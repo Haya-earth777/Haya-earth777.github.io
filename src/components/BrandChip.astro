@@ -5,8 +5,14 @@ import { brandIcons } from '../data/icons';
 
 interface Props {
   brand: Brand;
+  /** 職歴のタグは少し小さく表示する */
+  size?: 'md' | 'sm';
 }
-const { brand } = Astro.props;
+const { brand, size = 'md' } = Astro.props;
 const d = brand.mono ? undefined : brandIcons[brand.name];
+const box = size === 'sm' ? 'text-[12.5px] pt-[3px] pr-2.5 pb-[3px] pl-[7px]' : 'text-[14px] py-[5px] pr-3 pl-2';
+const icon = size === 'sm' ? 'w-3.5 h-3.5' : 'w-4 h-4';
 ---
-<span class="sk">{d ? <svg viewBox="0 0 24 24" aria-hidden="true"><path d={d} /></svg> : <i aria-hidden="true">{brand.mono ?? brand.name.charAt(0)}</i>}{brand.name}</span>
+<span class:list={['inline-flex items-center gap-2 rounded-full border border-line leading-[1.4] [transition:border-color_.25s,transform_.25s_var(--ease-soft)] hover:border-fg hover:[transform:translateY(-1px)]', box]}>{d
+  ? <svg class:list={['fill-current flex-none', icon]} viewBox="0 0 24 24" aria-hidden="true"><path d={d} /></svg>
+  : <i class:list={['rounded-[4px] bg-fg text-bg not-italic font-display font-bold text-[10.5px] grid place-items-center flex-none', icon]} aria-hidden="true">{brand.mono ?? brand.name.charAt(0)}</i>}{brand.name}</span>

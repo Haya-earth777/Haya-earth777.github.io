@@ -9,15 +9,15 @@ import Contact from '../components/Contact.astro';
 ---
 <Base>
   <Hero />
-  <main class="wrap">
+  <main class="max-w-[1120px] mx-auto">
     <Skills />
     <Career />
     <Strengths />
     <Activities />
     <Contact />
-    <footer>
+    <footer class="flex justify-between gap-4 flex-wrap pt-6 pb-10 text-[12.5px] text-muted">
       <span>© {new Date().getFullYear()} Haya</span>
-      <a class="totop" href="#">ページの先頭へ ↑</a>
+      <a class="text-fg" href="#">ページの先頭へ ↑</a>
     </footer>
   </main>
 </Base>

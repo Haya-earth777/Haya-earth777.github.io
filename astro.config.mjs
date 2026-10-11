@@ -1,8 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://haya-earth777.github.io',
+  vite: {
+    plugins: [tailwindcss()],
+  },
   // 見た目を Artifact 版と完全に一致させるため、HTML の空白は詰めない
   compressHTML: false,
   build: {
