@@ -22,7 +22,7 @@ export const profile = {
   initials: 'H',
   title: 'フルスタックエンジニア',
   location: '東京都在住',
-  status: 'カジュアル面談歓迎',
+  status: 'お気軽にご連絡ください',
   bio: 'Web エンジニアとして、SaaS の開発をしています。要件を決めるところからリリース後の運用まで担当していて、今はチームのリードとして計画や進行管理も見ています。開発以外では、メンターや採用面接、テックブログや登壇にも関わってきました。役者・ナレーターを目指していた時期と公法人での勤務を経て、独学でエンジニアになりました。',
   email: 'haya.earth777.dev@gmail.com',
 } as const;
@@ -41,7 +41,7 @@ export const socials: Social[] = [
 
 export type SkillRow =
   | { label: string; kind: 'chips'; items: Brand[]; /** チップの後ろに小さく添える補足 */ note?: string }
-  | { label: string; kind: 'text'; text: string }
+  | { label: string; kind: 'tags'; items: string[] }
   | { label: string; kind: 'certs'; items: string[] };
 
 export const skills: SkillRow[] = [
@@ -58,7 +58,7 @@ export const skills: SkillRow[] = [
     label: 'AI ツール', kind: 'chips',
     items: [{ name: 'Cursor', mono: 'C' }, { name: 'Devin', mono: 'D' }, { name: 'Claude Code' }, { name: 'Codex' }, { name: 'CodeRabbit', mono: 'C' }],
   },
-  { label: 'マネジメント', kind: 'text', text: '開発ロードマップの設計、タスクの割り振り・進捗管理、スケジュール調整、オンボーディング設計、メンタリング、採用面接' },
+  { label: 'マネジメント', kind: 'tags', items: ['ロードマップ設計', 'タスク・進捗管理', 'スケジュール調整', 'オンボーディング設計', 'メンタリング', '採用面接'] },
   {
     label: '資格', kind: 'certs',
     items: [
