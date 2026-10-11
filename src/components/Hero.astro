@@ -33,7 +33,6 @@ const hasAvatar = existsSync(new URL('../../public/avatar.jpg', import.meta.url)
         </div>
         <div>
           <p class="m-0 text-[22px] font-bold tracking-[0.08em] animate-[fadeUp_.8s_var(--ease-soft)_.45s_both]">{profile.title}</p>
-          <p class="m-0 text-[14px] text-muted animate-[fadeUp_.8s_var(--ease-soft)_.55s_both]">{profile.role}</p>
           <p class="mt-1 mb-0 mx-0 flex items-center gap-1.5 text-[13.5px] text-muted animate-[fadeUp_.8s_var(--ease-soft)_.6s_both]"><svg class="ic w-[15px] h-[15px]" aria-hidden="true"><use href="#i-pin" /></svg>{profile.location}</p>
           <ul class="list-none mt-2.5 mb-0 mx-0 p-0 flex flex-wrap gap-2 animate-[fadeUp_.8s_var(--ease-soft)_.6s_both] sp:gap-1.5">
             {socials.map((s) => (
