@@ -96,6 +96,8 @@
   /* スクロールで表示（JavaScript が、最初の画面より下にある要素にだけ付ける） */
   .pre { opacity: 0; transform: translateY(36px); }
   .reveal { transition: opacity 1s var(--ease-soft), transform 1s var(--ease-soft); }
+  /* 開いた時点で画面に入っている要素は、紹介文の続きとして順に出す（読み込み時に 1 回だけ。スマホでも動く） */
+  .enter { animation: fadeUp .8s var(--ease-soft) var(--enter-delay, .7s) both; }
 }
 
 @keyframes grow { to { transform: scaleX(1); } }

@@ -4,6 +4,17 @@ const root = document.documentElement;
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const finePointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+// 開いた時点で画面に入っている要素は、紹介文に続けて少しずつずらして出す（読み込み時に 1 回だけ）
+const revealTargets = [...document.querySelectorAll<HTMLElement>('[data-reveal]')];
+if (!reduce) {
+  revealTargets
+    .filter((el) => el.getBoundingClientRect().top < innerHeight)
+    .forEach((el, i) => {
+      el.style.setProperty('--enter-delay', `${0.75 + i * 0.08}s`);
+      el.classList.add('enter');
+    });
+}
+
 // スクロールで表示（マウス操作の PC のみ）。最初の画面に入っている要素は隠さない
 if (!reduce && finePointer && 'IntersectionObserver' in window) {
   const io = new IntersectionObserver(
