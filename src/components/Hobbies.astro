@@ -1,0 +1,15 @@
+---
+import { hobbies } from '../data/profile';
+import SectionHead from './SectionHead.astro';
+---
+<section class="grid grid-cols-[220px_minmax(0,1fr)] gap-12 py-[88px] border-t border-line tab:grid-cols-[minmax(0,1fr)] tab:gap-7 tab:py-16" aria-labelledby="h-likes" data-line>
+  <SectionHead id="h-likes" title="趣味" />
+  <ul class="list-none m-0 p-0 grid grid-cols-2 gap-x-10 gap-y-6 sp:grid-cols-[minmax(0,1fr)] sp:gap-y-5" data-reveal>
+    {hobbies.map((h) => (
+      <li class="flex items-center gap-4">
+        <span class="flex-none w-11 h-11 rounded-full bg-accent-soft text-accent grid place-items-center"><svg class="ic w-5 h-5" aria-hidden="true"><use href={`#i-${h.icon}`} /></svg></span>
+        <span class="grid min-w-0 leading-[1.5]"><b class="text-[15.5px] font-bold">{h.title}</b><span class="text-[13.5px] text-muted">{h.text}</span></span>
+      </li>
+    ))}
+  </ul>
+</section>

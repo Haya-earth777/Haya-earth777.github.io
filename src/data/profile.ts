@@ -8,7 +8,7 @@ export type YearMonth = `${number}-${number}`;
 export type LineIcon =
   | 'code' | 'briefcase' | 'star' | 'flag' | 'link' | 'mic' | 'pen' | 'monitor'
   | 'users' | 'coffee' | 'trophy' | 'loop' | 'sparkles' | 'compass' | 'mail'
-  | 'copy' | 'check' | 'award' | 'pin';
+  | 'copy' | 'check' | 'award' | 'pin' | 'ball' | 'walk' | 'book' | 'game';
 
 /** ロゴ。brandIcons にあるものはロゴ、ないものは頭文字のバッジで表示する */
 export interface Brand {
@@ -46,7 +46,7 @@ export type SkillRow =
 
 export const skills: SkillRow[] = [
   { label: '言語', kind: 'chips', items: [{ name: 'Ruby' }, { name: 'TypeScript' }] },
-  { label: 'フレームワーク', kind: 'chips', items: [{ name: 'Ruby on Rails' }, { name: 'React' }, { name: 'Next.js' }] },
+  { label: 'フレームワーク', kind: 'chips', items: [{ name: 'Ruby on Rails' }, { name: 'React' }, { name: 'Next.js' }, { name: 'Tailwind CSS' }] },
   { label: 'テスト', kind: 'chips', items: [{ name: 'RSpec', mono: 'R' }, { name: 'Vitest' }, { name: 'Playwright', mono: 'P' }, { name: 'Autify', mono: 'A' }] },
   { label: 'インフラ', kind: 'chips', items: [{ name: 'AWS' }], note: 'EC2 / RDS / Lambda / Glue / Athena' },
   { label: '運用・監視', kind: 'chips', items: [{ name: 'New Relic' }, { name: 'Datadog' }, { name: 'Rollbar', mono: 'R' }] },
@@ -149,7 +149,8 @@ export const jobs: Job[] = [
     chartEnd: '2025-01',
     about: '研究者向けの購買・在庫管理 SaaS のフルスタック開発',
     achievements: [
-      'EC2 のメモリリーク対応、E2E テストの自動化、監視の整備など、インフラ・運用を改善',
+      'EC2 のメモリリーク対応、Lambda の言語バージョン移行、RDS / Glue / Athena を使ったデータ抽出など、インフラまわりを担当',
+      'E2E テストの自動化と監視の整備で、運用を改善',
       '機能追加・UI 改善・バグ修正・テストまで一通り担当',
       'ISMS 認証に向けたセキュリティ整備や、資格手当制度の提案',
     ],
@@ -197,6 +198,19 @@ export const activities: Activity[] = [
   { when: '2024', kind: kinds.write, title: 'Qiita のトレンドで 2 位を獲得', text: '技術記事が 120 以上のいいねを集め、トレンドランキングで 2 位に' },
   { when: '2023', ongoing: true, kind: kinds.write, title: 'テックブログ・技術記事の執筆', text: '勤務先のテックブログ、Zenn、Speaker Deck などで発信' },
   { when: '2024', ongoing: true, kind: kinds.talk, title: 'LT 会・座談会・協賛イベントでの登壇', text: '採用広報も兼ねて社外のイベントで登壇' },
+];
+
+export interface Hobby {
+  icon: LineIcon;
+  title: string;
+  text: string;
+}
+
+export const hobbies: Hobby[] = [
+  { icon: 'ball', title: 'プロ野球観戦', text: '中日ドラゴンズファン歴 10 年' },
+  { icon: 'walk', title: 'ウォーキング', text: '毎日 1 万歩以上' },
+  { icon: 'book', title: '漫画', text: '中学生のころから少年ジャンプを購読' },
+  { icon: 'game', title: 'ゲーム', text: 'メジャーな FPS をいろいろプレイ' },
 ];
 
 export interface ContactLink extends Brand {
