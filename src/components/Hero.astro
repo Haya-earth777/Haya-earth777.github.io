@@ -2,9 +2,10 @@
 import { profile, socials } from '../data/profile';
 import { brandIcons } from '../data/icons';
 import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 
 // public/avatar.jpg があるときだけアイコン画像を出す（ないときは頭文字）
-const hasAvatar = existsSync(new URL('../../public/avatar.jpg', import.meta.url));
+const hasAvatar = existsSync(join(process.cwd(), 'public', 'avatar.jpg'));
 ---
 <div class="max-w-[1120px] mx-auto">
   <header class="grid gap-12 pt-8 pb-[72px] sp:gap-8 sp:pt-6 sp:pb-12">

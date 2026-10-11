@@ -7,7 +7,7 @@ import SectionHead from './SectionHead.astro';
   <SectionHead id="h-tools" title="スキル" />
   <dl class="m-0 grid" data-reveal>
     {skills.map((row) => (
-      <div class="grid grid-cols-[160px_minmax(0,1fr)] gap-6 items-center py-3.5 border-t border-line last:border-b sp:grid-cols-[minmax(0,1fr)] sp:gap-0">
+      <div class="grid grid-cols-[160px_minmax(0,1fr)] gap-6 items-center py-3.5 border-t border-line sp:grid-cols-[minmax(0,1fr)] sp:gap-0">
         <dt class="font-bold text-[14.5px]">{row.label}</dt>
         {row.kind === 'chips' && <dd class="m-0 text-[15px] text-fg flex flex-wrap gap-2">{row.items.map((b) => <BrandChip brand={b} />)}</dd>}
         {row.kind === 'text' && <dd class="m-0 text-[15px] text-muted">{row.text}</dd>}

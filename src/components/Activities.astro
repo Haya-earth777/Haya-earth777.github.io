@@ -9,7 +9,7 @@ const isYM = (v: string): v is YearMonth => /^\d{4}-\d{1,2}$/.test(v);
   <SectionHead id="h-acts" title="活動" sub="登壇・制作・発信" />
   <ol class="list-none m-0 p-0 border-t border-fg" data-reveal>
     {activities.map((a) => (
-      <li class="grid grid-cols-[110px_72px_minmax(0,1fr)] gap-5 items-baseline py-[18px] border-b border-line sp:grid-cols-[auto_minmax(0,1fr)] sp:gap-x-3 sp:gap-y-1.5">
+      <li class="grid grid-cols-[110px_72px_minmax(0,1fr)] gap-5 items-baseline py-[18px] border-b border-line last:border-b-0 sp:grid-cols-[auto_minmax(0,1fr)] sp:gap-x-3 sp:gap-y-1.5">
         {isYM(a.when)
           ? <time class="font-display font-semibold text-[16px] tabular-nums" datetime={a.when}>{formatYM(a.when)}</time>
           : <span class="font-body font-medium text-[13.5px] text-muted tabular-nums">{a.when}</span>}
