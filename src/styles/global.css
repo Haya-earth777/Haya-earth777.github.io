@@ -98,10 +98,24 @@
   .reveal { transition: opacity 1s var(--ease-soft), transform 1s var(--ease-soft); }
   /* 開いた時点で画面に入っている要素は、紹介文の続きとして順に出す（読み込み時に 1 回だけ。スマホでも動く） */
   .enter { animation: fadeUp .8s var(--ease-soft) var(--enter-delay, .7s) both; }
+  /*
+   * 区切り線を左から引く（マウス操作の PC のみ。JavaScript が data-line の要素に付ける）
+   * 線の上に背景色の帯をかぶせておき、それを右へ縮めて線を見せる。線の色はテーマに追従する
+   */
+  .draw-t, .draw-b { position: relative; }
+  .draw-t::before, .draw-b::after {
+    content: ""; position: absolute; left: 0; right: 0; z-index: 1; pointer-events: none;
+    background: var(--color-bg); transform-origin: right;
+    transition: transform 1.2s var(--ease-soft) var(--line-delay, 0s);
+  }
+  .draw-t::before { top: calc(var(--bw-t) * -1); height: var(--bw-t); }
+  .draw-b::after { bottom: calc(var(--bw-b) * -1); height: var(--bw-b); }
+  .drawn::before, .drawn::after { transform: scaleX(0); }
 }
 
 @keyframes grow { to { transform: scaleX(1); } }
 @keyframes rise { from { transform: translateY(105%); } }
+@keyframes wave { 35% { transform: translateY(-.09em); } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } }
 @keyframes flash { 0%, 40% { background: var(--color-accent-soft); } }
 @keyframes themeSpin { from { transform: rotate(-120deg) scale(.4); opacity: 0; } }

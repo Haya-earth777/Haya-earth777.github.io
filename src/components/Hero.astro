@@ -6,6 +6,17 @@ import { join } from 'node:path';
 
 // public/avatar.jpg があるときだけアイコン画像を出す（ないときは頭文字）
 const hasAvatar = existsSync(join(process.cwd(), 'public', 'avatar.jpg'));
+
+// 名前は 1 文字ずつずらしてせり上げる。PC でマウスを乗せると、同じ順に波打つ（main.ts が .wave を付ける）
+const letterClass = [
+  'animate-[rise_.9s_var(--ease-soft)_both] in-[.wave]:*:animate-[wave_.7s_var(--ease-soft)]',
+  'animate-[rise_.9s_var(--ease-soft)_.06s_both] in-[.wave]:*:animate-[wave_.7s_var(--ease-soft)_.05s]',
+  'animate-[rise_.9s_var(--ease-soft)_.12s_both] in-[.wave]:*:animate-[wave_.7s_var(--ease-soft)_.1s]',
+  'animate-[rise_.9s_var(--ease-soft)_.18s_both] in-[.wave]:*:animate-[wave_.7s_var(--ease-soft)_.15s]',
+  'animate-[rise_.9s_var(--ease-soft)_.24s_both] in-[.wave]:*:animate-[wave_.7s_var(--ease-soft)_.2s]',
+  'animate-[rise_.9s_var(--ease-soft)_.3s_both] in-[.wave]:*:animate-[wave_.7s_var(--ease-soft)_.25s]',
+];
+const letters = [...profile.name];
 ---
 <div class="max-w-[1120px] mx-auto">
   <header class="grid gap-12 pt-8 pb-[72px] sp:gap-8 sp:pt-6 sp:pb-12">
@@ -23,8 +34,8 @@ const hasAvatar = existsSync(join(process.cwd(), 'public', 'avatar.jpg'));
         </button>
       </div>
     </div>
-    <h1 class="m-0 font-display font-extrabold text-[clamp(56px,13vw,168px)] leading-[0.95] tracking-[-0.035em]" aria-label={profile.name}>
-      <span class="block overflow-hidden pb-[0.06em]" aria-hidden="true"><span class="inline-block animate-[rise_.9s_var(--ease-soft)_both]">{profile.name}</span></span>
+    <h1 id="name" class="m-0 font-display font-extrabold text-[clamp(56px,13vw,168px)] leading-[0.95] tracking-[-0.035em]" aria-label={profile.name}>
+      <span class="block overflow-hidden pb-[0.2em] -mb-[0.14em] [&.done]:overflow-visible" aria-hidden="true">{letters.map((c, i) => <span class={`inline-block ${letterClass[Math.min(i, letterClass.length - 1)]}`}><span class="inline-block">{c}</span></span>)}</span>
     </h1>
     <div class="grid grid-cols-[1fr_1.4fr] gap-10 items-end tab:grid-cols-[minmax(0,1fr)] tab:gap-5">
       <div class="flex items-center gap-5 sp:gap-4">

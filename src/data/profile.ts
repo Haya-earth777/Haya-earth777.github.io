@@ -173,6 +173,8 @@ export const strengths: Strength[] = [
 export interface Activity {
   /** 年月（"2026-06"）か年だけ（"2024"）。表示は年ごとにまとめ、新しい順に自動で並ぶ（月は並び順にだけ使う） */
   when: YearMonth | `${number}`;
+  /** 今も続けているもの。「継続中」の段にまとめ、when を始めた年として表示する */
+  ongoing?: boolean;
   kind: { label: string; icon: LineIcon };
   title: string;
   text?: string;
@@ -189,8 +191,8 @@ export const activities: Activity[] = [
   { when: '2024', kind: kinds.make, title: 'ベンチャー企業のホームページを立ち上げ', text: '副業として、企業サイトの立ち上げを担当' },
   { when: '2026-06', kind: kinds.talk, title: 'エンジニア向けの共催イベントに登壇' },
   { when: '2024', kind: kinds.write, title: 'Qiita のトレンドで 2 位を獲得', text: '技術記事が 120 以上のいいねを集め、トレンドランキングで 2 位に' },
-  { when: '2023', kind: kinds.write, title: 'テックブログ・技術記事の執筆', text: '勤務先のテックブログ、Zenn、Speaker Deck などで発信' },
-  { when: '2024', kind: kinds.talk, title: 'LT 会・座談会・協賛イベントでの登壇', text: '採用広報も兼ねて、社外のイベントで登壇' },
+  { when: '2023', ongoing: true, kind: kinds.write, title: 'テックブログ・技術記事の執筆', text: '勤務先のテックブログ、Zenn、Speaker Deck などで発信' },
+  { when: '2024', ongoing: true, kind: kinds.talk, title: 'LT 会・座談会・協賛イベントでの登壇', text: '採用広報も兼ねて社外のイベントで登壇' },
 ];
 
 export interface ContactLink extends Brand {

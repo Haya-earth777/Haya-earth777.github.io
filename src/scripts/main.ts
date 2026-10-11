@@ -35,6 +35,57 @@ if (!reduce && finePointer && 'IntersectionObserver' in window) {
   });
 }
 
+// 区切り線を左から引く（マウス操作の PC のみ）。最初の画面にある線は、紹介文のあとに引く
+if (!reduce && finePointer && 'IntersectionObserver' in window) {
+  let first = true;
+  const lio = new IntersectionObserver(
+    (entries) => {
+      let i = 0;
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const el = en.target as HTMLElement;
+        el.style.setProperty('--line-delay', `${(first ? 0.7 : 0) + i++ * 0.08}s`);
+        el.classList.add('drawn');
+        lio.unobserve(el);
+      });
+      first = false;
+    },
+    { rootMargin: '0px 0px -10% 0px' },
+  );
+  document.querySelectorAll<HTMLElement>('[data-line]').forEach((el) => {
+    const cs = getComputedStyle(el);
+    const t = parseFloat(cs.borderTopWidth);
+    const b = parseFloat(cs.borderBottomWidth);
+    if (t) {
+      el.style.setProperty('--bw-t', `${t}px`);
+      el.classList.add('draw-t');
+    }
+    if (b) {
+      el.style.setProperty('--bw-b', `${b}px`);
+      el.classList.add('draw-b');
+    }
+    if (t || b) lio.observe(el);
+  });
+}
+
+// 名前にマウスを乗せると、1 文字ずつ波打つ（マウス操作の PC のみ。せり上がりが終わってから）
+const nameEl = document.getElementById('name');
+const nameLine = nameEl?.firstElementChild;
+if (nameEl && nameLine && finePointer && !reduce) {
+  const count = nameLine.children.length;
+  let ended = 0;
+  nameLine.addEventListener('animationend', (e) => {
+    const name = (e as AnimationEvent).animationName;
+    if (name === 'rise' && ++ended === count) nameLine.classList.add('done');
+    if (name === 'wave' && e.target === nameLine.lastElementChild?.firstElementChild) nameEl.classList.remove('wave');
+  });
+  for (const letter of nameLine.children) {
+    letter.addEventListener('mouseenter', () => {
+      if (nameLine.classList.contains('done')) nameEl.classList.add('wave');
+    });
+  }
+}
+
 // 年表のバーを押したら、その職歴までスクロールして軽く光らせる
 document.querySelectorAll<HTMLAnchorElement>('.bar').forEach((bar) => {
   bar.addEventListener('click', (e) => {

@@ -2,11 +2,11 @@
 import { strengths } from '../data/profile';
 import SectionHead from './SectionHead.astro';
 ---
-<section class="grid grid-cols-[220px_minmax(0,1fr)] gap-12 py-[88px] border-t border-line tab:grid-cols-[minmax(0,1fr)] tab:gap-7 tab:py-16" aria-labelledby="h-goods">
+<section class="grid grid-cols-[220px_minmax(0,1fr)] gap-12 py-[88px] border-t border-line tab:grid-cols-[minmax(0,1fr)] tab:gap-7 tab:py-16" aria-labelledby="h-goods" data-line>
   <SectionHead id="h-goods" title="得意なこと" />
   <div class="grid grid-cols-2 gap-x-10 gap-y-8 tab:grid-cols-[minmax(0,1fr)] tab:gap-8">
     {strengths.map((s) => (
-      <div class="pt-[18px] border-t border-line" data-reveal>
+      <div class="pt-[18px] border-t border-line" data-reveal data-line>
         <h3 class="mt-0 mx-0 mb-1.5 text-[17px] font-bold leading-[1.5] flex items-center gap-2.5"><svg class="ic w-5 h-5 text-accent" aria-hidden="true"><use href={`#i-${s.icon}`} /></svg>{s.title}</h3>
         <p class="m-0 text-[14.5px] text-muted">{s.text}</p>
       </div>

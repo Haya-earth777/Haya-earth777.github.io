@@ -37,7 +37,7 @@ const barTransition = [
   '[transition:transform_1.1s_var(--ease-soft)_.55s,filter_.2s_.55s]',
 ];
 ---
-<section class="grid grid-cols-[220px_minmax(0,1fr)] gap-12 py-[88px] border-t border-line tab:grid-cols-[minmax(0,1fr)] tab:gap-7 tab:py-16" aria-labelledby="h-works">
+<section class="grid grid-cols-[220px_minmax(0,1fr)] gap-12 py-[88px] border-t border-line tab:grid-cols-[minmax(0,1fr)] tab:gap-7 tab:py-16" aria-labelledby="h-works" data-line>
   <SectionHead id="h-works" title="職歴" />
   <div>
     <div class="group/chart grid grid-cols-[36px_minmax(0,1fr)] grid-rows-[30px_30px_20px] gap-x-3.5 gap-y-2 mb-10 sp:grid-cols-[28px_minmax(0,1fr)] sp:gap-2" data-reveal role="img" aria-label={chartLabel}>
@@ -73,9 +73,9 @@ const barTransition = [
         <span class:list={['absolute top-0 whitespace-nowrap -translate-x-1/2 text-fg font-bold', nowLabelClass]}>現在</span>
       </div>
     </div>
-    <ol class="list-none m-0 p-0 border-t border-fg" data-reveal>
+    <ol class="list-none m-0 p-0 border-t border-fg" data-reveal data-line>
       {jobs.map((j) => (
-        <li class="grid grid-cols-[190px_minmax(0,1fr)] gap-6 py-7 border-b border-line last:border-b-0 scroll-mt-6 [&.flash]:animate-[flash_1.2s_var(--ease-soft)] sp:grid-cols-[minmax(0,1fr)] sp:gap-2.5 sp:py-6" id={j.id}>
+        <li class="grid grid-cols-[190px_minmax(0,1fr)] gap-6 py-7 border-b border-line last:border-b-0 scroll-mt-6 [&.flash]:animate-[flash_1.2s_var(--ease-soft)] sp:grid-cols-[minmax(0,1fr)] sp:gap-2.5 sp:py-6" id={j.id} data-line>
           <div class="flex flex-wrap content-start items-center gap-2">
             <span class="w-full font-display font-semibold text-[17px] tabular-nums tracking-[0.01em] sp:w-auto sp:text-[15.5px]">{formatYM(j.start)} <i class="not-italic text-muted font-medium">〜</i> {j.end ? formatYM(j.end) : '現在'}</span>
             {j.end === null && <span class="text-[12px] font-bold py-px px-2.5 rounded-full whitespace-nowrap bg-accent text-bg">在籍中</span>}
