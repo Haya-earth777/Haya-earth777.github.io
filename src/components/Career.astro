@@ -1,4 +1,5 @@
 ---
+import { splitCount } from '../lib/count';
 import { jobs, skills, type Brand } from '../data/profile';
 import { barOf, formatYM, nowLabelClass, nowLineClass, yearLabels } from '../lib/timeline';
 import BrandChip from './BrandChip.astro';
@@ -67,7 +68,7 @@ const barTransition = [
           })}
         </div>
       ))}
-      <div class:list={["col-[2] row-[1/4] relative pointer-events-none before:content-[''] before:absolute before:top-[-6px] before:bottom-4 before:[border-left:1.5px_dashed_var(--color-fg)] before:opacity-50", nowLineClass]} aria-hidden="true"></div>
+      <div class:list={["col-[2] row-[1/4] relative pointer-events-none before:content-[''] before:absolute before:top-[-6px] before:bottom-4 before:[border-left:1.5px_dashed_var(--color-fg)] before:opacity-50", nowLineClass]} aria-hidden="true"><span class:list={['now-dot', nowLabelClass]}></span></div>
       <div class="col-[2] row-[3] relative text-[11.5px] text-muted tabular-nums" aria-hidden="true">
         {yearLabels.map((y) => <span class:list={['absolute top-0 whitespace-nowrap', y.className]}>{y.year}</span>)}
         <span class:list={['absolute top-0 whitespace-nowrap -translate-x-1/2 text-fg font-bold', nowLabelClass]}>現在</span>
@@ -84,7 +85,7 @@ const barTransition = [
           <div class="grid gap-2.5 min-w-0">
             <h3 class="m-0 text-[18px] font-bold leading-[1.5]">{j.company}<small class="block text-[13.5px] font-medium text-muted">{j.role}</small></h3>
             <p class="m-0 text-[15px]">{j.about}</p>
-            <ul class="m-0 pl-[1.1em] grid gap-1 text-[14.5px] text-muted marker:text-accent">{j.achievements.map((a) => <li>{a}</li>)}</ul>
+            <ul class="m-0 pl-[1.1em] grid gap-1 text-[14.5px] text-muted marker:text-accent">{j.achievements.map((a) => <li>{splitCount(a).map((p) => (typeof p === 'number' ? <span class="count" data-count={p}>{p}</span> : p))}</li>)}</ul>
             <p class="mt-1 mb-0 mx-0 flex flex-wrap gap-1.5">{j.tech.map((name) => <BrandChip brand={brand(name)} size="sm" />)}</p>
           </div>
         </li>

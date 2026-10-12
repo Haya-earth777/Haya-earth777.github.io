@@ -23,7 +23,7 @@ const letters = [...profile.name];
     <div class="flex justify-between items-center gap-4 flex-wrap text-[13px] text-muted animate-[fadeUp_.8s_var(--ease-soft)_.35s_both]">
       <div class="flex items-center gap-5 ml-auto sp:gap-3">
         <button
-          class="theme w-[38px] h-[38px] rounded-full border border-line bg-transparent text-fg cursor-pointer grid place-items-center [transition:border-color_.2s,transform_.2s_var(--ease-soft)] hover:border-fg active:[transform:scale(.9)] [&.spin_svg]:animate-[themeSpin_.6s_var(--ease-soft)]"
+          data-magnet class="theme w-[38px] h-[38px] rounded-full border border-line bg-transparent text-fg cursor-pointer grid place-items-center [transition:border-color_.2s,transform_.2s_var(--ease-soft)] hover:border-fg active:[transform:scale(.9)] [&.spin_svg]:animate-[themeSpin_.6s_var(--ease-soft)]"
           id="theme-btn"
           type="button"
           aria-label="ライトとダークを切り替える"
@@ -33,7 +33,7 @@ const letters = [...profile.name];
         </button>
       </div>
     </div>
-    <h1 id="name" class="m-0 font-display font-extrabold text-[clamp(56px,13vw,168px)] leading-[0.95] tracking-[-0.035em]" aria-label={profile.name}>
+    <h1 id="name" class="drift m-0 font-display font-extrabold text-[clamp(56px,13vw,168px)] leading-[0.95] tracking-[-0.035em]" aria-label={profile.name}>
       <span class="block overflow-hidden pb-[0.2em] -mb-[0.14em] [&.done]:overflow-visible" aria-hidden="true">{letters.map((c, i) => <span class={`inline-block ${letterClass[Math.min(i, letterClass.length - 1)]}`}><span class="inline-block">{c}</span></span>)}</span>
     </h1>
     <div class="grid grid-cols-[1fr_1.4fr] gap-10 items-end tab:grid-cols-[minmax(0,1fr)] tab:gap-5">
@@ -53,6 +53,7 @@ const letters = [...profile.name];
                   href={s.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-magnet
                   aria-label={s.name}
                   title={s.name}
                 >{s.mono

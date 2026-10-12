@@ -181,6 +181,68 @@ if (finePointer) {
   });
 }
 
+// 成果の数字を、表示されたときに 0 から数え上げる（マウス操作の PC のみ。開いた時点で見えている数字はそのまま）
+if (!reduce && finePointer && 'IntersectionObserver' in window) {
+  const cio = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const el = en.target as HTMLElement;
+        cio.unobserve(el);
+        const to = Number(el.dataset.count);
+        const start = performance.now();
+        const tick = (t: number) => {
+          const k = Math.min((t - start) / 1200, 1);
+          el.textContent = String(Math.round(to * (1 - Math.pow(1 - k, 3))));
+          if (k < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    },
+    { rootMargin: '0px 0px -15% 0px' },
+  );
+  document.querySelectorAll<HTMLElement>('.count').forEach((el) => {
+    if (el.getBoundingClientRect().top < innerHeight) return;
+    el.style.display = 'inline-block';
+    el.style.minWidth = `${el.getBoundingClientRect().width}px`;
+    el.style.textAlign = 'right';
+    el.textContent = '0';
+    cio.observe(el);
+  });
+}
+
+// ボタンが少しだけカーソルに吸い寄せられる（マウス操作の PC のみ）
+// ボタンが動くと境目で出入りを繰り返すので、出入りではなく「ボタンの中心からの距離」で判断する
+if (finePointer && !reduce) {
+  const magnets = [...document.querySelectorAll<HTMLElement>('[data-magnet]')].map((el) => ({ el, tx: 0, ty: 0, x: 0, y: 0, raf: 0 }));
+  const loop = (m: (typeof magnets)[number]) => {
+    m.x += (m.tx - m.x) * 0.2;
+    m.y += (m.ty - m.y) * 0.2;
+    if (Math.abs(m.tx - m.x) + Math.abs(m.ty - m.y) > 0.05) {
+      m.el.style.translate = `${m.x.toFixed(2)}px ${m.y.toFixed(2)}px`;
+      m.raf = requestAnimationFrame(() => loop(m));
+    } else {
+      m.raf = 0;
+      m.el.style.translate = m.tx || m.ty ? `${m.tx.toFixed(2)}px ${m.ty.toFixed(2)}px` : '';
+    }
+  };
+  addEventListener('pointermove', (e) => {
+    magnets.forEach((m) => {
+      const r = m.el.getBoundingClientRect();
+      // いまずれている分を引いて、本来の中心を求める
+      const dx = e.clientX - (r.left - m.x + r.width / 2);
+      const dy = e.clientY - (r.top - m.y + r.height / 2);
+      const near = Math.hypot(dx, dy) < Math.max(r.width, r.height) / 2 + 12;
+      const tx = near ? dx * 0.3 : 0;
+      const ty = near ? dy * 0.3 : 0;
+      if (tx === m.tx && ty === m.ty) return;
+      m.tx = tx;
+      m.ty = ty;
+      if (!m.raf) m.raf = requestAnimationFrame(() => loop(m));
+    });
+  }, { passive: true });
+}
+
 // 年表のバーを押したら、その職歴までスクロールして軽く光らせる
 document.querySelectorAll<HTMLAnchorElement>('.bar').forEach((bar) => {
   bar.addEventListener('click', (e) => {

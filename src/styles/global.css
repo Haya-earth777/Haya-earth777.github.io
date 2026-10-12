@@ -87,7 +87,8 @@
     .progress {
       display: block; position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); height: 2px; z-index: 20;
       background: var(--color-accent); transform-origin: left; transform: scaleX(0);
-      animation: grow linear both; animation-timeline: scroll(root);
+      /* animation の一括指定にすると、ビルド時に animation-timeline までまとめられてブラウザに無視されるため、個別に書く */
+      animation-name: grow; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: scroll(root);
     }
   }
   @media (hover: none), (pointer: coarse) {
@@ -104,6 +105,19 @@
   .enter .mask > span { animation: rise .9s var(--ease-soft) var(--enter-delay, .7s) both; }
   .reveal:not(.pre) .mask > span { animation: rise .9s var(--ease-soft) .1s both; }
   /* 職歴の行と年表のバーの連動（マウス操作の PC のみ。main.ts がクラスを付ける） */
+  /* 数え上げる数字（数字の幅をそろえて、数えている間に文字が揺れないようにする） */
+  .count { font-variant-numeric: tabular-nums; }
+  /* 年表の「現在」の点（PC ではゆっくり脈打つ） */
+  .now-dot { position: absolute; top: -10px; width: 8px; height: 8px; margin-left: -3.25px; border-radius: 50%; background: var(--color-accent); }
+  @media (hover: hover) and (pointer: fine) {
+    .now-dot { animation: nowPulse 2.4s var(--ease-soft) infinite; }
+  }
+  /* 名前がスクロールに合わせて少し左へ流れる（PC のみ。CSS の scroll-driven animations） */
+  @supports (animation-timeline: scroll()) {
+    @media (hover: hover) and (pointer: fine) {
+      .drift { animation-name: drift; animation-timing-function: linear; animation-fill-mode: both; animation-timeline: scroll(root); animation-range: 0 70vh; }
+    }
+  }
   .xp { position: relative; }
   .xp > * { position: relative; }
   .xp::before {
@@ -149,6 +163,8 @@
 @keyframes rise { from { transform: translateY(105%); } }
 @keyframes wave { 35% { transform: translateY(-.09em); } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } }
+@keyframes nowPulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 55%, transparent); } 70%, 100% { box-shadow: 0 0 0 10px transparent; } }
+@keyframes drift { to { translate: -6vw 0; opacity: .35; } }
 @keyframes slideIn { from { opacity: 0; transform: translateX(56px); } }
 @keyframes flash { 0%, 40% { background: var(--color-accent-soft); } }
 @keyframes themeSpin { from { transform: rotate(-120deg) scale(.4); opacity: 0; } }

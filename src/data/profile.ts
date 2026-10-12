@@ -68,6 +68,7 @@ export const skills: SkillRow[] = [
   },
 ];
 
+/** 文中の [[16]] のように囲んだ数字は、PC で表示されたときに 0 から数え上げる */
 export interface Job {
   id: string;
   company: string;
@@ -95,7 +96,7 @@ export const jobs: Job[] = [
     id: 'job-sec',
     company: 'セキュリティ SaaS 企業',
     short: 'セキュリティ SaaS',
-    role: 'ソフトウェアエンジニア',
+    role: 'ソフトウェアエンジニア（新規機能開発のリード）',
     track: 'main',
     start: '2025-02',
     end: null,
@@ -103,7 +104,7 @@ export const jobs: Job[] = [
     achievements: [
       '2・3 名の開発メンバーとともに新規機能開発をリードし、タスクの割り振り・進捗管理・コードレビューを担当',
       'アーカイブ・復元機能や操作履歴機能などを、要件定義からリリースまで一貫して開発',
-      '16 万件規模のレコードを扱う処理を改善し、1 分半でタイムアウトしていたところを 5 秒に短縮',
+      '[[16]] 万件規模のレコードを扱う処理を改善し、1 分半でタイムアウトしていたところを [[5]] 秒に短縮',
       'テスト・監視体制を整備したほか、新メンバーのメンターや採用（カジュアル面談・一次面接）も担当',
     ],
     tech: ['Ruby on Rails', 'TypeScript', 'React'],
@@ -196,7 +197,7 @@ export const activities: Activity[] = [
   { when: '2026-10', kind: kinds.make, title: 'ポートフォリオサイトを制作', text: 'Astro・TypeScript・Tailwind CSS で構築し、GitHub Actions で GitHub Pages に自動デプロイ。View Transitions API など新しいブラウザ機能も活用', url: 'https://haya-earth777.github.io/' },
   { when: '2024', kind: kinds.make, title: 'ベンチャー企業のホームページを立ち上げ', text: '副業として、実装を担当' },
   { when: '2026-06', kind: kinds.talk, title: 'エンジニア向けの共催イベントに登壇', text: 'AI 活用やフルリモートでの働き方について発表', url: 'https://note.com/secure_navi/n/n34f072153f64' },
-  { when: '2024', kind: kinds.write, title: 'Qiita のトレンドランキングで 2 位', text: '技術記事が 120 以上のいいねを獲得', url: 'https://qiita.com/Haya_earth777/items/cbf8a832a31d3c2b29b6' },
+  { when: '2024', kind: kinds.write, title: 'Qiita のトレンドランキングで 2 位', text: '技術記事が [[120]] 以上のいいねを獲得', url: 'https://qiita.com/Haya_earth777/items/cbf8a832a31d3c2b29b6' },
   { when: '2025', kind: kinds.interview, title: 'フルリモートで働くエンジニアとしてインタビュー記事に掲載', text: 'フルリモートでの働き方について回答', url: 'https://note.com/dear_ixora4308/n/n39611eac4a98' },
   { when: '2024', kind: kinds.talk, title: 'エンジニアコミュニティのイベントで LT', text: 'Ruby 技術者認定試験 Silver の取得について発表', url: 'https://progaku.connpass.com/event/325129/' },
   { when: '2022-10', kind: kinds.talk, title: 'エンジニア転職をテーマにした座談会に登壇', text: '未経験からエンジニアに転職した経験を共有', url: 'https://x.com/Haya_earth777/status/1585228761922146305' },
