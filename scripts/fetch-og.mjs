@@ -77,7 +77,7 @@ const data = {};
 for (const url of urls) {
   try {
     data[url] = await fetchOne(url);
-    log(`${url} → ${data[url].image ? '画像あり' : '画像なし'}`);
+    log(`${url} → ${data[url].image ? '画像あり' : '画像なし'}／${data[url].title ?? 'タイトルなし'}`);
   } catch (e) {
     warn(`取得できませんでした: ${url}（${e.message}）`);
   }
