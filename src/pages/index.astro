@@ -17,9 +17,9 @@ import Contact from '../components/Contact.astro';
     <Activities />
     <Hobbies />
     <Contact />
-    <footer class="flex justify-between gap-4 flex-wrap pt-6 pb-10 text-[12.5px] text-muted">
+    <footer class="flex justify-between items-center gap-4 flex-wrap pt-6 pb-10 text-[12.5px] text-muted">
       <span>© {new Date().getFullYear()} Haya</span>
-      <a class="text-fg" href="#">ページの先頭へ ↑</a>
+      <a class="w-[38px] h-[38px] rounded-full border border-line grid place-items-center text-fg [transition:border-color_.2s] fine:hover:border-fg" href="#" aria-label="ページの先頭へ" title="ページの先頭へ" data-totop data-magnet><svg class="ic w-[18px] h-[18px] [--ic-stroke:2]" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg></a>
     </footer>
   </main>
 </Base>

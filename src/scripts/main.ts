@@ -243,6 +243,14 @@ if (finePointer && !reduce) {
   }, { passive: true });
 }
 
+// ページの先頭へ戻るボタン（なめらかにスクロールする）
+document.querySelectorAll<HTMLAnchorElement>('[data-totop]').forEach((a) => {
+  a.addEventListener('click', (e) => {
+    e.preventDefault();
+    scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+});
+
 // 年表のバーを押したら、その職歴までスクロールして軽く光らせる
 document.querySelectorAll<HTMLAnchorElement>('.bar').forEach((bar) => {
   bar.addEventListener('click', (e) => {
