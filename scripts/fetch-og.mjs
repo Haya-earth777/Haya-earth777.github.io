@@ -13,6 +13,11 @@ const TIMEOUT_MS = 10_000;
 const IMAGE_TYPES = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp', 'image/gif': 'gif' };
 const HEADERS = { 'user-agent': 'Mozilla/5.0 (compatible; OGP fetcher for haya-earth777.github.io)' };
 
+// GitHub Actions では、結果を注釈（annotation）としても残し、ログを開かなくても確認できるようにする
+const ci = process.env.GITHUB_ACTIONS === 'true';
+const log = (msg) => (ci ? console.log(`::notice title=OGP::${msg}`) : console.log(`[og] ${msg}`));
+const warn = (msg) => (ci ? console.log(`::warning title=OGP::${msg}`) : console.warn(`[og] ${msg}`));
+
 const decode = (s) =>
   s.replace(/&(#x[0-9a-f]+|#\d+|amp|lt|gt|quot|#39|apos);/gi, (m, e) => {
     const k = e.toLowerCase();
@@ -56,7 +61,7 @@ const fetchOne = async (url) => {
       await writeFile(`${IMAGE_DIR}/${file}`, buf);
       entry.image = `og/${file}`;
     } catch (e) {
-      console.warn(`[og] 画像を取得できませんでした: ${e.message}`);
+      warn(`画像を取得できませんでした: ${e.message}`);
     }
   }
   return entry;
@@ -72,9 +77,9 @@ const data = {};
 for (const url of urls) {
   try {
     data[url] = await fetchOne(url);
-    console.log(`[og] ${url} → ${data[url].image ? '画像あり' : '画像なし'}`);
+    log(`${url} → ${data[url].image ? '画像あり' : '画像なし'}`);
   } catch (e) {
-    console.warn(`[og] 取得できませんでした: ${e.message}`);
+    warn(`取得できませんでした: ${url}（${e.message}）`);
   }
 }
 await writeFile(DATA_FILE, `${JSON.stringify(data, null, 2)}\n`);
