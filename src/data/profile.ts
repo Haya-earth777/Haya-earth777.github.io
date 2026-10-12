@@ -22,7 +22,7 @@ export const profile = {
   initials: 'H',
   title: 'フルスタックエンジニア',
   location: '東京都在住',
-  bio: 'Web エンジニアとして、主に SaaS の開発に携わっています。要件定義・設計からリリース後の運用までを担当し、現在は新規機能開発のリードとして、開発メンバーのマネジメントも行っています。開発以外では、メンターや採用面接、テックブログの執筆や登壇にも取り組んできました。役者・ナレーターを目指していた時期と公法人での勤務を経て、独学でエンジニアになりました。',
+  bio: 'Web エンジニアとして、主に SaaS の開発に携わっています。要件定義・設計からリリース後の運用までを担当し、現在は新規機能開発のリードとして、開発メンバーのマネジメントも行っています。開発以外では、メンターや採用面接、テックブログの執筆や登壇にも取り組んできました。役者・ナレーターを目指していた時期と公的機関での勤務を経て、独学でエンジニアになりました。',
   email: 'haya.earth777.dev@gmail.com',
 } as const;
 
@@ -199,6 +199,7 @@ export const activities: Activity[] = [
   { when: '2024', kind: kinds.write, title: 'Qiita のトレンドランキングで 2 位', text: '技術記事が 120 以上のいいねを獲得', url: 'https://qiita.com/Haya_earth777/items/cbf8a832a31d3c2b29b6' },
   { when: '2025', kind: kinds.interview, title: 'フルリモートで働くエンジニアとしてインタビュー記事に掲載', text: 'フルリモートでの働き方について回答', url: 'https://note.com/dear_ixora4308/n/n39611eac4a98' },
   { when: '2024', kind: kinds.talk, title: 'エンジニアコミュニティのイベントで LT', text: 'Ruby 技術者認定試験 Silver の取得について発表', url: 'https://progaku.connpass.com/event/325129/' },
+  { when: '2022-10', kind: kinds.talk, title: 'エンジニア転職をテーマにした座談会に登壇', text: '未経験からエンジニアに転職した経験を共有', url: 'https://x.com/Haya_earth777/status/1585228761922146305' },
 ];
 
 export interface Hobby {

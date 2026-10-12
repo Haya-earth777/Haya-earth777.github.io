@@ -12,7 +12,13 @@ const ogImage = (url: string) => {
   const image = og[url]?.image;
   return image && existsSync(join(process.cwd(), 'public', image)) ? image : undefined;
 };
-const ogTitle = (url: string) => og[url]?.title ?? (new URL(url).hostname.endsWith('connpass.com') ? 'イベントページを見る' : '記事を読む');
+const ogTitle = (url: string) => {
+  if (og[url]?.title) return og[url].title;
+  const host = new URL(url).hostname;
+  if (host.endsWith('connpass.com')) return 'イベントページを見る';
+  if (host === 'x.com' || host === 'twitter.com') return 'ポストを見る';
+  return '記事を読む';
+};
 
 // 新しい順に年ごとにまとめる（同じ年の中では、月が分かるものを先に）
 const sortKey = (v: string) => {
