@@ -22,7 +22,7 @@ export const profile = {
   initials: 'H',
   title: 'フルスタックエンジニア',
   location: '東京都在住',
-  bio: 'Web エンジニアとして、主に SaaS の開発に携わっています。要件定義・設計からリリース後の運用までを担当し、現在は新規機能開発のリードとして、タスクの割り振りや進捗管理も行っています。開発以外では、メンターや採用面接、テックブログの執筆や登壇にも取り組んできました。役者・ナレーターを目指していた時期と公法人での勤務を経て、独学でエンジニアになりました。',
+  bio: 'Web エンジニアとして、主に SaaS の開発に携わっています。要件定義・設計からリリース後の運用までを担当し、現在は新規機能開発のリードとして、開発メンバーのマネジメントも行っています。開発以外では、メンターや採用面接、テックブログの執筆や登壇にも取り組んできました。役者・ナレーターを目指していた時期と公法人での勤務を経て、独学でエンジニアになりました。',
   email: 'haya.earth777.dev@gmail.com',
 } as const;
 
@@ -55,7 +55,7 @@ export const skills: SkillRow[] = [
   },
   {
     label: '開発ツール', kind: 'chips',
-    items: [{ name: 'GitHub' }, { name: 'Slack', mono: 'S' }, { name: 'Notion' }, { name: 'Figma' }, { name: 'Jira' }],
+    items: [{ name: 'GitHub' }, { name: 'GitHub Actions' }, { name: 'Docker' }, { name: 'Slack', mono: 'S' }, { name: 'Notion' }, { name: 'Figma' }, { name: 'Jira' }],
   },
   { label: 'マネジメント', kind: 'tags', items: ['タスク・進捗管理', 'スケジュール調整', 'オンボーディング設計', 'メンタリング', '採用面接'] },
   {
