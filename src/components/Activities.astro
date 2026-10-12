@@ -12,10 +12,11 @@ const ogImage = (url: string) => {
   const image = og[url]?.image;
   return image && existsSync(join(process.cwd(), 'public', image)) ? image : undefined;
 };
-// カードのタイトル。取得できなかったときと、X（タイトルが「名前 (@ID) on X」で中身が分からない）は活動の名前を使う
+// カードのタイトル。取得できなかったときと、X（「名前 (@ID) on X」）やこのサイト（「Haya」）のように
+// タイトルだけでは中身が分からないものは、活動の名前を使う
 const ogTitle = (a: Activity & { url: string }) => {
   const host = new URL(a.url).hostname;
-  if (host === 'x.com' || host === 'twitter.com') return a.title;
+  if (host === 'x.com' || host === 'twitter.com' || a.url.startsWith(Astro.site?.toString() ?? '')) return a.title;
   return og[a.url]?.title ?? a.title;
 };
 
