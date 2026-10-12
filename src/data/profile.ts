@@ -22,7 +22,7 @@ export const profile = {
   initials: 'H',
   title: 'フルスタックエンジニア',
   location: '東京都在住',
-  bio: 'Web エンジニアとして、主に SaaS の開発に携わっています。要件定義・設計からリリース後の運用までを担当し、現在はチームのリードとして計画づくりや進行管理も行っています。開発以外では、メンターや採用面接、テックブログの執筆や登壇にも取り組んできました。役者・ナレーターを目指していた時期と公法人での勤務を経て、独学でエンジニアになりました。',
+  bio: 'Web エンジニアとして、主に SaaS の開発に携わっています。要件定義・設計からリリース後の運用までを担当し、現在はチームのリードとして、タスクの割り振りや進行管理も行っています。開発以外では、メンターや採用面接、テックブログの執筆や登壇にも取り組んできました。役者・ナレーターを目指していた時期と公法人での勤務を経て、独学でエンジニアになりました。',
   email: 'haya.earth777.dev@gmail.com',
 } as const;
 
@@ -57,7 +57,7 @@ export const skills: SkillRow[] = [
     label: '開発ツール', kind: 'chips',
     items: [{ name: 'GitHub' }, { name: 'Slack', mono: 'S' }, { name: 'Notion' }, { name: 'Figma' }, { name: 'Jira' }],
   },
-  { label: 'マネジメント', kind: 'tags', items: ['ロードマップ設計', 'タスク・進捗管理', 'スケジュール調整', 'オンボーディング設計', 'メンタリング', '採用面接'] },
+  { label: 'マネジメント', kind: 'tags', items: ['タスク・進捗管理', 'スケジュール調整', 'オンボーディング設計', 'メンタリング', '採用面接'] },
   {
     label: '資格', kind: 'certs',
     items: [
@@ -101,7 +101,7 @@ export const jobs: Job[] = [
     end: null,
     about: 'ISMS 認証の取得・運用を支援する SaaS の自社開発',
     achievements: [
-      'チームのリードとして、ロードマップ設計・タスクの割り振り・スケジュール調整を担当。アーカイブ・復元機能や操作履歴機能などを、要件定義からリリースまで一貫して開発',
+      'チームのリードとして、開発ロードマップの策定・タスクの割り振り・スケジュール調整を担当。アーカイブ・復元機能や操作履歴機能などを、要件定義からリリースまで一貫して開発',
       '16 万件規模のレコードを扱う処理のパフォーマンスを改善',
       'テスト・監視体制を整備したほか、新メンバーのメンターや採用面接も担当',
     ],
@@ -168,7 +168,7 @@ export interface Strength {
 }
 
 export const strengths: Strength[] = [
-  { icon: 'loop', title: 'プレイヤーとリードを両立する', text: '自分で実装を進めながら、チームのリードとして計画づくりや進行管理も担っています。' },
+  { icon: 'loop', title: 'プレイヤーとリードを両立する', text: '自分で実装を進めながら、チームのリードとしてスケジュール調整やメンバーのサポートも担っています。' },
   { icon: 'sparkles', title: 'AI や新しい技術を取り入れる', text: 'Claude Code や Cursor などの AI ツールを日々の開発で活用し、生産性を高める工夫を続けています。副業では本業と異なる技術スタックの現場にも参加し、新しい技術を吸収してきました。' },
   { icon: 'users', title: '職種を越えて連携する', text: 'セールスやカスタマーサクセスと話し合いながら、要件をまとめるのが得意です。チーム内の雑談の場づくりにも取り組んできました。' },
   { icon: 'compass', title: '開発以外の課題にも取り組む', text: '採用面接や ISMS 認証の取得対応、ドメイン理解を深める勉強会の主催など、組織に必要なことであれば、開発以外にも主体的に関わってきました。' },
@@ -198,7 +198,7 @@ export const activities: Activity[] = [
   { when: '2024', kind: kinds.make, title: 'ベンチャー企業のホームページを立ち上げ', text: '副業として担当' },
   { when: '2026-06', kind: kinds.talk, title: 'エンジニア向けの共催イベントに登壇', text: 'AI 活用やフルリモートでの働き方について発表', url: 'https://note.com/secure_navi/n/n34f072153f64' },
   { when: '2024', kind: kinds.write, title: 'Qiita のトレンドランキングで 2 位', text: '技術記事が 120 以上のいいねを獲得', url: 'https://qiita.com/Haya_earth777/items/cbf8a832a31d3c2b29b6' },
-  { when: '2025', kind: kinds.interview, title: 'フルリモートで働くエンジニアとしてインタビューに登場', text: 'フルリモートでの働き方について回答', url: 'https://note.com/dear_ixora4308/n/n39611eac4a98' },
+  { when: '2025', kind: kinds.interview, title: 'フルリモートで働くエンジニアとしてインタビュー記事に掲載', text: 'フルリモートでの働き方について回答', url: 'https://note.com/dear_ixora4308/n/n39611eac4a98' },
   { when: '2024', kind: kinds.talk, title: 'エンジニアコミュニティのイベントで LT', text: 'Ruby 技術者認定試験 Silver の取得について発表', url: 'https://progaku.connpass.com/event/325129/' },
   { when: '2023', ongoing: true, kind: kinds.write, title: 'テックブログの執筆', text: '勤務先のテックブログや Zenn、Speaker Deck などで発信' },
   { when: '2024', ongoing: true, kind: kinds.talk, title: 'LT 会・座談会・協賛イベントでの登壇', text: '採用広報も兼ねて、社外のイベントに参加' },
