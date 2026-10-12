@@ -126,13 +126,13 @@ export const jobs: Job[] = [
   },
   {
     id: 'job-hr',
-    company: 'HR 系 SaaS 企業',
-    short: 'HR 系 SaaS',
+    company: 'HR テック企業',
+    short: 'HR テック',
     role: 'Web エンジニア（業務委託）',
     track: 'side',
     start: '2025-04',
     end: '2025-06',
-    about: '転職エージェント企業が提供する、スキルシート作成 SaaS の機能開発',
+    about: 'スキルシートを自動作成する SaaS の機能開発',
     achievements: [
       'Rails の View で作られていた全 18 ステップの入力フォームを React で作り直し、画面遷移も簡略化して入力体験を改善',
       '大型機能 3 件を契約期間内にリリース',
