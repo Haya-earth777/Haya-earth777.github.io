@@ -157,6 +157,22 @@ export const jobs: Job[] = [
     ],
     tech: ['Ruby on Rails', 'React', 'AWS'],
   },
+  {
+    id: 'job-dx',
+    company: '地方の DX を支援するコンサルティング企業',
+    short: 'サイト制作',
+    role: '業務委託エンジニア',
+    track: 'side',
+    start: '2023-10',
+    end: '2024-03',
+    about: 'コーポレートサイトの立ち上げ',
+    achievements: [
+      '3 名のチームで、デザインから実装・公開までを担当',
+      'Figma でのデザインに加え、各ページのマークアップ・アニメーションと、問い合わせページのバックエンドを実装',
+      'サーバーの設定とセキュリティ対策を行い、契約期間内にリリース',
+    ],
+    tech: [],
+  },
 ];
 
 /** 年表の範囲（この年の1月から、4年分） */
@@ -195,7 +211,6 @@ const kinds = {
 
 export const activities: Activity[] = [
   { when: '2026-10', kind: kinds.make, title: 'ポートフォリオサイトを制作', text: 'Astro・TypeScript・Tailwind CSS で構築し、GitHub Actions で GitHub Pages に自動デプロイ。View Transitions API など新しいブラウザ機能も活用', url: 'https://haya-earth777.github.io/' },
-  { when: '2024', kind: kinds.make, title: 'ベンチャー企業のホームページを立ち上げ', text: '副業として、実装を担当' },
   { when: '2026-06', kind: kinds.talk, title: 'エンジニア向けの共催イベントに登壇', text: 'AI 活用やフルリモートでの働き方について発表', url: 'https://note.com/secure_navi/n/n34f072153f64' },
   { when: '2024', kind: kinds.write, title: 'Qiita のトレンドランキングで 2 位', text: '技術記事が [[120]] 以上のいいねを獲得', url: 'https://qiita.com/Haya_earth777/items/cbf8a832a31d3c2b29b6' },
   { when: '2025', kind: kinds.interview, title: 'フルリモートで働くエンジニアとしてインタビュー記事に掲載', text: 'フルリモートでの働き方について回答', url: 'https://note.com/dear_ixora4308/n/n39611eac4a98' },

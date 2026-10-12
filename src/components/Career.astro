@@ -30,12 +30,10 @@ const chartLabel =
 
 // 段（本業・副業）の行番号
 const rowClass = ['row-[1]', 'row-[2]'];
-// バーが左から伸びる順番（1段目の1本目 → 2本目 → 2段目の1本目 → 2本目）
+// バーが左から伸びる順番（本業の 1 本目 → 2 本目 → 副業の 1 本目 → 2 本目 → 3 本目）
 const barTransition = [
-  '[transition:transform_1.1s_var(--ease-soft),filter_.2s]',
-  '[transition:transform_1.1s_var(--ease-soft)_.2s,filter_.2s]',
-  '[transition:transform_1.1s_var(--ease-soft)_.4s,filter_.2s]',
-  '[transition:transform_1.1s_var(--ease-soft)_.55s,filter_.2s]',
+  ['[transition:transform_1.1s_var(--ease-soft),filter_.2s]', '[transition:transform_1.1s_var(--ease-soft)_.2s,filter_.2s]'],
+  ['[transition:transform_1.1s_var(--ease-soft)_.4s,filter_.2s]', '[transition:transform_1.1s_var(--ease-soft)_.55s,filter_.2s]', '[transition:transform_1.1s_var(--ease-soft)_.7s,filter_.2s]'],
 ];
 ---
 <section class="grid grid-cols-[220px_minmax(0,1fr)] gap-12 py-[88px] border-t border-line tab:grid-cols-[minmax(0,1fr)] tab:gap-7 tab:py-16" aria-labelledby="h-works" data-line>
@@ -52,7 +50,7 @@ const barTransition = [
               <a
                 class:list={[
                   'bar row-[1] relative flex items-center rounded-full text-[12px] font-bold origin-left cursor-pointer hover:brightness-[1.15] active:brightness-[1.2] group-[.pre]/chart:[transform:scaleX(0)] sp:text-[11px]',
-                  barTransition[i * 2 + k],
+                  barTransition[i][Math.min(k, barTransition[i].length - 1)],
                   t.track === 'main' ? 'bg-fg text-bg' : 'bg-accent-soft text-accent shadow-[inset_0_0_0_1.5px_var(--color-accent)]',
                   { 'ml-[3px]': t.track === 'main' && k > 0 },
                   bar.className,
@@ -86,7 +84,7 @@ const barTransition = [
             <h3 class="m-0 text-[18px] font-bold leading-[1.5]">{j.company}<small class="block text-[13.5px] font-medium text-muted">{j.role}</small></h3>
             <p class="m-0 text-[15px]">{j.about}</p>
             <ul class="m-0 pl-[1.1em] grid gap-1 text-[14.5px] text-muted marker:text-accent">{j.achievements.map((a) => <li>{splitCount(a).map((p) => (typeof p === 'number' ? <span class="count" data-count={p}>{p}</span> : p))}</li>)}</ul>
-            <p class="mt-1 mb-0 mx-0 flex flex-wrap gap-1.5">{j.tech.map((name) => <BrandChip brand={brand(name)} size="sm" />)}</p>
+            {j.tech.length > 0 && <p class="mt-1 mb-0 mx-0 flex flex-wrap gap-1.5">{j.tech.map((name) => <BrandChip brand={brand(name)} size="sm" />)}</p>}
           </div>
         </li>
       ))}
