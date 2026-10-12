@@ -50,7 +50,8 @@ const fetchOne = async (url) => {
   const html = htmlBuf.toString('utf8');
   const entry = {};
   const title = metaContent(html, 'og:title');
-  if (title) entry.title = title.slice(0, 200);
+  // サイト名や投稿者名が後ろに付くものは外す（note は「タイトル｜投稿者」、Qiita は「タイトル - Qiita」）
+  if (title) entry.title = title.replace(/\s*｜[^｜]*$/, '').replace(/\s+-\s+Qiita$/, '').slice(0, 200);
   const image = metaContent(html, 'og:image');
   if (image) {
     try {
