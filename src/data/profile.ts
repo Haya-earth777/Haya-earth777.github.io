@@ -23,7 +23,7 @@ export const profile = {
   title: 'フルスタックエンジニア',
   location: '東京都在住',
   status: 'お気軽にご連絡ください',
-  bio: 'Web エンジニアとして、SaaS の開発をしています。要件を決めるところからリリース後の運用まで担当していて、今はチームのリードとして計画や進行管理も見ています。開発以外では、メンターや採用面接、テックブログや登壇にも関わってきました。役者・ナレーターを目指していた時期と公法人での勤務を経て、独学でエンジニアになりました。',
+  bio: 'Web エンジニアとして、SaaS の開発に携わっています。要件定義からリリース後の運用までを担当し、現在はチームのリードとして計画づくりや進行管理も行っています。開発以外では、メンターや採用面接、テックブログの執筆や登壇にも取り組んできました。役者・ナレーターを目指していた時期と公法人での勤務を経て、独学でエンジニアになりました。',
   email: 'haya.earth777.dev@gmail.com',
 } as const;
 
@@ -102,9 +102,9 @@ export const jobs: Job[] = [
     end: null,
     about: 'ISMS 認証の取得・運用を支援する SaaS の自社開発',
     achievements: [
-      'チームのリードとして、ロードマップ設計・タスクの割り振り・スケジュール調整を担当。アーカイブ・復元、操作履歴などの機能を要件定義からリリースまで手がける',
-      '16万件規模のデータで起きていた処理の遅延を改善',
-      'テストと監視体制の整備に加え、新メンバーのメンターや採用面接も担当',
+      'チームのリードとして、ロードマップ設計・タスクの割り振り・スケジュール調整を担当。アーカイブ・復元機能や操作履歴機能などを、要件定義からリリースまで一貫して開発',
+      '16 万件規模のレコードを扱う処理のパフォーマンスを改善',
+      'テスト・監視体制を整備したほか、新メンバーのメンターや採用面接も担当',
     ],
     tech: ['Ruby on Rails', 'TypeScript', 'React'],
   },
@@ -116,10 +116,10 @@ export const jobs: Job[] = [
     track: 'side',
     start: '2025-08',
     end: '2026-09',
-    about: '大手企業向けセキュリティサービスの開発。フロントエンドを中心に担当',
+    about: '大手企業向けセキュリティサービスの開発（フロントエンド中心）',
     achievements: [
-      'API の型とクライアントの自動生成を軸に、モックから本番 API へのつなぎ込みまでを主導',
-      '検索条件の多い画面の設計・実装と、E2E テストの自動化',
+      'API の型定義とクライアントの自動生成を軸に、モック API の実装から本番 API との結合までを主導',
+      '検索条件の多い画面を設計・実装し、E2E テストで主要シナリオを自動化',
     ],
     tech: ['Next.js', 'TypeScript'],
   },
@@ -131,9 +131,9 @@ export const jobs: Job[] = [
     track: 'side',
     start: '2025-04',
     end: '2025-06',
-    about: '転職エージェント企業の、スキルシート作成 SaaS の機能開発',
+    about: '転職エージェント企業が提供する、スキルシート作成 SaaS の機能開発',
     achievements: [
-      '18 ステップある入力フォームを React で作り直し、入力しやすく改善',
+      '全 18 ステップの入力フォームを React で再設計し、入力体験を改善',
       '大型機能 3 件を契約期間内にリリース',
     ],
     tech: ['Ruby on Rails', 'React'],
@@ -149,10 +149,10 @@ export const jobs: Job[] = [
     chartEnd: '2025-01',
     about: '研究者向けの購買・在庫管理 SaaS のフルスタック開発',
     achievements: [
-      'EC2 のメモリリーク対応、Lambda の言語バージョン移行、RDS / Glue / Athena を使ったデータ抽出など、インフラまわりを担当',
-      'E2E テストの自動化と監視の整備で、運用を改善',
-      '機能追加・UI 改善・バグ修正・テストまで一通り担当',
-      'ISMS 認証に向けたセキュリティ整備や、資格手当制度の提案',
+      '機能追加・UI 改善・バグ修正・テスト実装まで一貫して担当',
+      'EC2 のメモリリーク対応、Lambda の言語バージョン移行、RDS / Glue / Athena を使ったデータ抽出など、インフラ・運用の改善',
+      'E2E テストの自動化と、監視体制の整備',
+      'ISMS 認証の取得に向けた社内セキュリティ統制の整備や、資格手当制度の提案',
     ],
     tech: ['Ruby on Rails', 'React', 'AWS'],
   },
@@ -169,10 +169,10 @@ export interface Strength {
 }
 
 export const strengths: Strength[] = [
-  { icon: 'loop', title: '手を動かしながら、チームを回す', text: '実装は自分でしつつ、チームのリードとして計画づくりや進行管理もしています。' },
-  { icon: 'sparkles', title: 'AI ツールを日常的に使う', text: 'Claude Code や Cursor などを毎日の開発で使い、生産性を上げる工夫を続けています。副業では、本業と違う技術スタックの現場にも入ってきました。' },
-  { icon: 'users', title: '職種をまたいで話を進める', text: 'セールスやカスタマーサクセスと話しながら要件をまとめるのが得意です。社内では雑談の場づくりにも関わってきました。' },
-  { icon: 'compass', title: '開発の外の仕事も拾う', text: '採用面接や ISMS 認証の取得対応、ドメイン理解の勉強会の主催など、開発以外で必要なことにも手を出してきました。' },
+  { icon: 'loop', title: 'プレイヤーとリードを両立する', text: '自分で実装を進めながら、チームのリードとして計画づくりや進行管理も担っています。' },
+  { icon: 'sparkles', title: 'AI や新しい技術を取り入れる', text: 'Claude Code や Cursor などの AI ツールを日々の開発で活用し、生産性を高める工夫を続けています。副業では本業と異なる技術スタックの現場にも参加し、新しい技術を吸収してきました。' },
+  { icon: 'users', title: '職種を越えて連携する', text: 'セールスやカスタマーサクセスと話し合いながら、要件をまとめるのが得意です。チーム内の雑談の場づくりにも取り組んできました。' },
+  { icon: 'compass', title: '開発以外の課題にも取り組む', text: '採用面接や ISMS 認証の取得対応、ドメイン理解を深める勉強会の主催など、組織に必要なことであれば、開発以外にも主体的に関わってきました。' },
 ];
 
 export interface Activity {
@@ -192,12 +192,12 @@ const kinds = {
 } as const satisfies Record<string, Activity['kind']>;
 
 export const activities: Activity[] = [
-  { when: '2026-10', kind: kinds.make, title: 'このポートフォリオサイトを制作', text: 'Astro と TypeScript で作成し、GitHub Actions で GitHub Pages に自動公開。View Transitions API などの新しいブラウザ機能も取り入れています' },
-  { when: '2024', kind: kinds.make, title: 'ベンチャー企業のホームページを立ち上げ', text: '副業として、企業サイトの立ち上げを担当' },
+  { when: '2026-10', kind: kinds.make, title: 'ポートフォリオサイトを制作', text: 'Astro・TypeScript・Tailwind CSS で構築し、GitHub Actions で GitHub Pages に自動デプロイ。View Transitions API など新しいブラウザ機能も活用' },
+  { when: '2024', kind: kinds.make, title: 'ベンチャー企業のホームページを立ち上げ', text: '副業として担当' },
   { when: '2026-06', kind: kinds.talk, title: 'エンジニア向けの共催イベントに登壇' },
-  { when: '2024', kind: kinds.write, title: 'Qiita のトレンドで 2 位を獲得', text: '技術記事が 120 以上のいいねを集め、トレンドランキングで 2 位に' },
-  { when: '2023', ongoing: true, kind: kinds.write, title: 'テックブログ・技術記事の執筆', text: '勤務先のテックブログ、Zenn、Speaker Deck などで発信' },
-  { when: '2024', ongoing: true, kind: kinds.talk, title: 'LT 会・座談会・協賛イベントでの登壇', text: '採用広報も兼ねて社外のイベントで登壇' },
+  { when: '2024', kind: kinds.write, title: 'Qiita のトレンドランキングで 2 位', text: '技術記事が 120 以上のいいねを獲得' },
+  { when: '2023', ongoing: true, kind: kinds.write, title: 'テックブログ・技術記事の執筆', text: '勤務先のテックブログや Zenn、Speaker Deck などで発信' },
+  { when: '2024', ongoing: true, kind: kinds.talk, title: 'LT 会・座談会・協賛イベントでの登壇', text: '採用広報も兼ねて、社外のイベントに参加' },
 ];
 
 export interface Hobby {
@@ -209,8 +209,8 @@ export interface Hobby {
 export const hobbies: Hobby[] = [
   { icon: 'ball', title: 'プロ野球観戦', text: '中日ドラゴンズファン歴 10 年' },
   { icon: 'walk', title: 'ウォーキング', text: '毎日 1 万歩以上' },
-  { icon: 'book', title: '漫画', text: '中学生のころから少年ジャンプを購読' },
-  { icon: 'game', title: 'ゲーム', text: 'メジャーな FPS をいろいろプレイ' },
+  { icon: 'book', title: '漫画', text: '中学生のころから週刊少年ジャンプを購読' },
+  { icon: 'game', title: 'ゲーム', text: '人気の FPS を中心にプレイ' },
 ];
 
 export interface ContactLink extends Brand {
