@@ -212,7 +212,7 @@ const kinds = {
 export const activities: Activity[] = [
   { when: '2026-10', kind: kinds.make, title: 'ポートフォリオサイトを制作', text: 'Astro・TypeScript・Tailwind CSSで構築し、GitHub ActionsでGitHub Pagesに自動デプロイ。View Transitions APIなど新しいブラウザ機能も活用', url: 'https://haya-earth777.github.io/' },
   { when: '2026-06', kind: kinds.talk, title: 'エンジニア向けの共催イベントに登壇', text: 'AI活用やフルリモートでの働き方について発表', url: 'https://note.com/secure_navi/n/n34f072153f64' },
-  { when: '2024', kind: kinds.write, title: 'Qiitaのトレンドランキングで2位', text: '技術記事が[[120]]以上のいいねを獲得', url: 'https://qiita.com/Haya_earth777/items/cbf8a832a31d3c2b29b6' },
+  { when: '2024', kind: kinds.write, title: 'Qiitaのトレンドランキングで2位', text: 'コミュニケーションをテーマにした記事が[[120]]以上のいいねを獲得', url: 'https://qiita.com/Haya_earth777/items/cbf8a832a31d3c2b29b6' },
   { when: '2025', kind: kinds.interview, title: 'フルリモートで働くエンジニアとしてインタビュー記事に掲載', text: 'フルリモートでの働き方について回答', url: 'https://note.com/dear_ixora4308/n/n39611eac4a98' },
   { when: '2024', kind: kinds.talk, title: 'エンジニアコミュニティのイベントでLT', text: 'Ruby技術者認定試験Silverの取得について発表', url: 'https://progaku.connpass.com/event/325129/' },
   { when: '2022-10', kind: kinds.talk, title: 'エンジニア転職をテーマにした座談会に登壇', text: '未経験からエンジニアに転職した経験を共有', url: 'https://x.com/Haya_earth777/status/1585228761922146305' },
