@@ -13,11 +13,11 @@ const ogImage = (url: string) => {
   return image && existsSync(join(process.cwd(), 'public', image)) ? image : undefined;
 };
 const ogTitle = (url: string) => {
-  if (og[url]?.title) return og[url].title;
   const host = new URL(url).hostname;
-  if (host.endsWith('connpass.com')) return 'イベントページを見る';
+  // X のタイトルは「名前 (@ID) on X」で中身が分からないので使わない
   if (host === 'x.com' || host === 'twitter.com') return 'ポストを見る';
-  return '記事を読む';
+  if (og[url]?.title) return og[url].title;
+  return host.endsWith('connpass.com') ? 'イベントページを見る' : '記事を読む';
 };
 
 // 新しい順に年ごとにまとめる（同じ年の中では、月が分かるものを先に）
