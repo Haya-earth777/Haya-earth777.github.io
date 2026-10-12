@@ -59,7 +59,7 @@ const arrow = 'w-9 h-9 rounded-full border border-line bg-transparent text-fg gr
       <ul class="list-none m-0 p-0 flex gap-3.5 overflow-x-auto snap-x snap-mandatory overscroll-x-contain pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden [mask-image:linear-gradient(to_right,#000_calc(100%-56px),transparent)] group-[.at-end]/pick:[mask-image:none] fine:cursor-grab [&.dragging]:cursor-grabbing [&.dragging]:snap-none" data-track aria-labelledby="pick-label">
         {picks.map((a, i) => (
           <li class:list={['flex-none w-[260px] snap-start sp:w-[240px]', slideIn[Math.min(i, slideIn.length - 1)]]}>
-            <a class="h-full grid grid-rows-[auto_1fr] rounded-xl border border-line bg-card overflow-hidden [transition:border-color_.25s] fine:hover:border-fg" href={a.url} target="_blank" rel="noopener noreferrer" draggable="false">
+            <a class="spot h-full grid grid-rows-[auto_1fr] rounded-xl border border-line bg-card overflow-hidden" href={a.url} target="_blank" rel="noopener noreferrer" draggable="false">
               <span class="relative aspect-[1.91/1] bg-accent-soft text-accent grid place-items-center">{ogImage(a.url)
                 ? <img class="absolute inset-0 w-full h-full object-cover" src={ogImage(a.url)} alt="" loading="lazy" decoding="async" draggable="false" />
                 : <svg class="ic w-6 h-6" aria-hidden="true"><use href="#i-link" /></svg>}</span>

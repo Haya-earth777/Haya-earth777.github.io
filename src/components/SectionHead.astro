@@ -7,4 +7,4 @@ interface Props {
 }
 const { id, title, sub } = Astro.props;
 ---
-<div data-reveal class="self-start sticky top-[calc(env(safe-area-inset-top,0px)+32px)] tab:static touch:static"><h2 class="m-0 text-[22px] font-bold leading-[1.3] tracking-[0.06em]" id={id}>{title}</h2>{sub && <p class="mt-1.5 mb-0 mx-0 text-[13px] text-muted">{sub}</p>}</div>
+<div data-reveal class="self-start sticky top-[calc(env(safe-area-inset-top,0px)+32px)] tab:static touch:static"><h2 class="m-0 text-[22px] font-bold leading-[1.3] tracking-[0.06em]" id={id}><span class="mask"><span>{title}</span></span></h2>{sub && <p class="mt-1.5 mb-0 mx-0 text-[13px] text-muted">{sub}</p>}</div>

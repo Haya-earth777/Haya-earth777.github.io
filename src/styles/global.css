@@ -98,6 +98,38 @@
   .reveal { transition: opacity 1s var(--ease-soft), transform 1s var(--ease-soft); }
   /* 開いた時点で画面に入っている要素は、紹介文の続きとして順に出す（読み込み時に 1 回だけ。スマホでも動く） */
   .enter { animation: fadeUp .8s var(--ease-soft) var(--enter-delay, .7s) both; }
+  /* 見出しを名前と同じく、下からせり上げる（開いた時点で見えている見出しと、PC でスクロールして表示された見出し） */
+  .mask { display: block; overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; }
+  .mask > span { display: inline-block; }
+  .enter .mask > span { animation: rise .9s var(--ease-soft) var(--enter-delay, .7s) both; }
+  .reveal:not(.pre) .mask > span { animation: rise .9s var(--ease-soft) .1s both; }
+  /* 職歴の行と年表のバーの連動（マウス操作の PC のみ。main.ts がクラスを付ける） */
+  .xp { position: relative; }
+  .xp > * { position: relative; }
+  .xp::before {
+    content: ""; position: absolute; inset: 0 -16px; border-radius: 12px; pointer-events: none;
+    background: var(--color-accent-soft); opacity: 0; transition: opacity .3s var(--ease-soft);
+  }
+  .xp.hl::before { opacity: 1; }
+  .dim .bar:not(.on) { filter: opacity(.3); }
+  /* カードの上で、カーソルの位置にだけ光がにじみ、枠線もその部分だけ明るくなる（マウス操作の PC のみ） */
+  @media (hover: hover) and (pointer: fine) {
+    .spot { position: relative; }
+    .spot::before, .spot::after {
+      content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+      opacity: 0; transition: opacity .35s var(--ease-soft);
+    }
+    .spot::before { z-index: 1; background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), color-mix(in srgb, var(--color-accent) 10%, transparent), transparent 70%); }
+    .spot::after {
+      z-index: 2; padding: 1px;
+      background: radial-gradient(200px circle at var(--mx, 50%) var(--my, 50%), var(--color-accent), transparent 70%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    }
+    .spot:hover::before, .spot:hover::after { opacity: 1; }
+    .spot img { transition: transform .6s var(--ease-soft); }
+    .spot:hover img { transform: scale(1.04); }
+  }
   /*
    * 区切り線を左から引く（マウス操作の PC のみ。JavaScript が data-line の要素に付ける）
    * 線の上に背景色の帯をかぶせておき、それを右へ縮めて線を見せる。線の色はテーマに追従する
@@ -110,7 +142,7 @@
   }
   .draw-t::before { top: calc(var(--bw-t) * -1); height: var(--bw-t); }
   .draw-b::after { bottom: calc(var(--bw-b) * -1); height: var(--bw-b); }
-  .drawn::before, .drawn::after { transform: scaleX(0); }
+  .draw-t.drawn::before, .draw-b.drawn::after { transform: scaleX(0); }
 }
 
 @keyframes grow { to { transform: scaleX(1); } }

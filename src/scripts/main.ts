@@ -145,6 +145,42 @@ document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((wrap) => {
   }, true);
 });
 
+// 職歴の行と年表のバーを連動させる（マウス操作の PC のみ）。片方に乗せると、もう片方の対応するものが目立つ
+const chartEl = document.querySelector<HTMLElement>('.bar')?.closest<HTMLElement>('[role="img"]');
+if (chartEl && finePointer) {
+  const pairs = [...document.querySelectorAll<HTMLAnchorElement>('.bar')].flatMap((bar) => {
+    const row = document.querySelector<HTMLElement>(bar.getAttribute('href') ?? '');
+    return row ? [{ bar, row }] : [];
+  });
+  pairs.forEach(({ bar, row }) => {
+    const on = () => {
+      chartEl.classList.add('dim');
+      bar.classList.add('on');
+      row.classList.add('hl');
+    };
+    const off = () => {
+      chartEl.classList.remove('dim');
+      bar.classList.remove('on');
+      row.classList.remove('hl');
+    };
+    [bar, row].forEach((el) => {
+      el.addEventListener('mouseenter', on);
+      el.addEventListener('mouseleave', off);
+    });
+  });
+}
+
+// カードの光の位置をカーソルに合わせる（マウス操作の PC のみ）
+if (finePointer) {
+  document.querySelectorAll<HTMLElement>('.spot').forEach((el) => {
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+}
+
 // 年表のバーを押したら、その職歴までスクロールして軽く光らせる
 document.querySelectorAll<HTMLAnchorElement>('.bar').forEach((bar) => {
   bar.addEventListener('click', (e) => {
