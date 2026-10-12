@@ -39,15 +39,15 @@ export const socials: Social[] = [
 ];
 
 export type SkillRow =
-  | { label: string; kind: 'chips'; items: Brand[]; /** チップの後ろに小さく添える補足 */ note?: string }
+  | { label: string; kind: 'chips'; items: Brand[] }
   | { label: string; kind: 'tags'; items: string[] }
   | { label: string; kind: 'certs'; items: string[] };
 
 export const skills: SkillRow[] = [
-  { label: '言語', kind: 'chips', items: [{ name: 'Ruby' }, { name: 'TypeScript' }] },
-  { label: 'フレームワーク', kind: 'chips', items: [{ name: 'Ruby on Rails' }, { name: 'React' }, { name: 'Next.js' }, { name: 'Tailwind CSS' }] },
+  { label: 'バックエンド', kind: 'chips', items: [{ name: 'Ruby' }, { name: 'Ruby on Rails' }] },
+  { label: 'フロントエンド', kind: 'chips', items: [{ name: 'TypeScript' }, { name: 'React' }, { name: 'Next.js' }, { name: 'Tailwind CSS' }] },
   { label: 'テスト', kind: 'chips', items: [{ name: 'RSpec', mono: 'R' }, { name: 'Vitest' }, { name: 'Playwright', mono: 'P' }, { name: 'Autify', mono: 'A' }] },
-  { label: 'インフラ', kind: 'chips', items: [{ name: 'AWS' }], note: 'EC2 / RDS / Lambda / Glue / Athena' },
+  { label: 'インフラ', kind: 'chips', items: [{ name: 'AWS' }] },
   { label: '運用・監視', kind: 'chips', items: [{ name: 'New Relic' }, { name: 'Datadog' }, { name: 'Rollbar', mono: 'R' }] },
   {
     label: '開発ツール', kind: 'chips',
@@ -181,7 +181,7 @@ export interface Activity {
   ongoing?: boolean;
   kind: { label: string; icon: LineIcon };
   title: string;
-  /** 記事やイベントのページ。あればタイトルがリンクになる */
+  /** 記事やイベントのページ。あれば説明の下にリンクのカードを出す（画像とタイトルはビルド時に取得） */
   url?: string;
   text?: string;
 }
