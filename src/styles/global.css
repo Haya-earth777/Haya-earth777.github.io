@@ -117,5 +117,6 @@
 @keyframes rise { from { transform: translateY(105%); } }
 @keyframes wave { 35% { transform: translateY(-.09em); } }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } }
+@keyframes slideIn { from { opacity: 0; transform: translateX(56px); } }
 @keyframes flash { 0%, 40% { background: var(--color-accent-soft); } }
 @keyframes themeSpin { from { transform: rotate(-120deg) scale(.4); opacity: 0; } }

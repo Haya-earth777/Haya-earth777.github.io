@@ -86,6 +86,65 @@ if (nameEl && nameLine && finePointer && !reduce) {
   }
 }
 
+// 活動のカードの横スクロール。ボタンで 1 枚ずつ送り、マウスではドラッグでも動かせる（指では普通にスワイプ）
+document.querySelectorAll<HTMLElement>('[data-carousel]').forEach((wrap) => {
+  const track = wrap.querySelector<HTMLElement>('[data-track]');
+  const prev = wrap.querySelector<HTMLButtonElement>('[data-prev]');
+  const next = wrap.querySelector<HTMLButtonElement>('[data-next]');
+  if (!track || !prev || !next) return;
+  const step = () => {
+    const card = track.firstElementChild as HTMLElement | null;
+    return card ? card.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || '0') : 260;
+  };
+  const update = () => {
+    const max = track.scrollWidth - track.clientWidth - 1;
+    prev.disabled = track.scrollLeft <= 0;
+    next.disabled = track.scrollLeft >= max;
+    wrap.classList.toggle('at-end', track.scrollLeft >= max);
+  };
+  prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: reduce ? 'auto' : 'smooth' }));
+  next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: reduce ? 'auto' : 'smooth' }));
+  track.addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  update();
+
+  if (!finePointer) return;
+  let startX = 0, startLeft = 0, moved = false, down = false;
+  track.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    down = true;
+    moved = false;
+    startX = e.clientX;
+    startLeft = track.scrollLeft;
+  });
+  addEventListener('pointermove', (e) => {
+    if (!down) return;
+    const dx = e.clientX - startX;
+    if (!moved && Math.abs(dx) > 5) {
+      moved = true;
+      track.classList.add('dragging');
+    }
+    if (moved) track.scrollLeft = startLeft - dx;
+  });
+  addEventListener('pointerup', () => {
+    if (!down) return;
+    down = false;
+    if (!moved) return;
+    // スナップを戻してから、いちばん近いカードに合わせる
+    const left = track.scrollLeft;
+    track.classList.remove('dragging');
+    track.scrollLeft = left;
+    track.scrollTo({ left: Math.round(left / step()) * step(), behavior: reduce ? 'auto' : 'smooth' });
+  });
+  // ドラッグした後のクリックでリンクが開かないようにする
+  track.addEventListener('click', (e) => {
+    if (moved) {
+      e.preventDefault();
+      moved = false;
+    }
+  }, true);
+});
+
 // 年表のバーを押したら、その職歴までスクロールして軽く光らせる
 document.querySelectorAll<HTMLAnchorElement>('.bar').forEach((bar) => {
   bar.addEventListener('click', (e) => {

@@ -180,7 +180,7 @@ export interface Activity {
   when: YearMonth | `${number}`;
   kind: { label: string; icon: LineIcon };
   title: string;
-  /** 記事やイベントのページ。あれば説明の下にリンクのカードを出す（画像とタイトルはビルド時に取得） */
+  /** 記事やイベントのページ。あれば活動の上の「ピックアップ」にカードで並べる（画像とタイトルはビルド時に取得） */
   url?: string;
   text?: string;
 }
@@ -193,7 +193,7 @@ const kinds = {
 } as const satisfies Record<string, Activity['kind']>;
 
 export const activities: Activity[] = [
-  { when: '2026-10', kind: kinds.make, title: 'ポートフォリオサイトを制作', text: 'Astro・TypeScript・Tailwind CSS で構築し、GitHub Actions で GitHub Pages に自動デプロイ。View Transitions API など新しいブラウザ機能も活用' },
+  { when: '2026-10', kind: kinds.make, title: 'ポートフォリオサイトを制作', text: 'Astro・TypeScript・Tailwind CSS で構築し、GitHub Actions で GitHub Pages に自動デプロイ。View Transitions API など新しいブラウザ機能も活用', url: 'https://haya-earth777.github.io/' },
   { when: '2024', kind: kinds.make, title: 'ベンチャー企業のホームページを立ち上げ', text: '副業として、実装を担当' },
   { when: '2026-06', kind: kinds.talk, title: 'エンジニア向けの共催イベントに登壇', text: 'AI 活用やフルリモートでの働き方について発表', url: 'https://note.com/secure_navi/n/n34f072153f64' },
   { when: '2024', kind: kinds.write, title: 'Qiita のトレンドランキングで 2 位', text: '技術記事が 120 以上のいいねを獲得', url: 'https://qiita.com/Haya_earth777/items/cbf8a832a31d3c2b29b6' },
