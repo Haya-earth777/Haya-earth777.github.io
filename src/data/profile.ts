@@ -34,7 +34,7 @@ export const socials: Social[] = [
   { name: 'GitHub', url: 'https://github.com/Haya-earth777' },
   { name: 'X', url: 'https://x.com/Haya_earth777' },
   { name: 'Zenn', url: 'https://zenn.dev/haya_tech' },
-  { name: 'Qiita', url: 'https://qiita.com/Nine-777', mono: 'Q' },
+  { name: 'Qiita', url: 'https://qiita.com/Haya_earth777', mono: 'Q' },
   { name: 'note', url: 'https://note.com/97997', mono: 'n' },
 ];
 
