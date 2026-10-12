@@ -94,8 +94,8 @@ export interface Job {
 export const jobs: Job[] = [
   {
     id: 'job-sec',
-    company: 'セキュリティ SaaS 企業',
-    short: 'セキュリティ SaaS',
+    company: 'セキュリティ認証 SaaS 企業',
+    short: 'セキュリティ認証 SaaS',
     role: 'ソフトウェアエンジニア（新規機能開発のリード）',
     track: 'main',
     start: '2025-02',
@@ -111,8 +111,8 @@ export const jobs: Job[] = [
   },
   {
     id: 'job-soc',
-    company: 'セキュリティサービス開発会社',
-    short: 'セキュリティ開発',
+    company: '受託開発企業',
+    short: '受託開発',
     role: '業務委託エンジニア',
     track: 'side',
     start: '2025-08',
@@ -159,7 +159,7 @@ export const jobs: Job[] = [
   },
   {
     id: 'job-dx',
-    company: '地方の DX を支援するコンサルティング企業',
+    company: 'コンサルティング企業',
     short: 'サイト制作',
     role: '業務委託エンジニア',
     track: 'side',
@@ -167,8 +167,8 @@ export const jobs: Job[] = [
     end: '2024-03',
     about: 'コーポレートサイトの立ち上げ',
     achievements: [
-      '3 名のチームで、デザインから実装・公開までを担当',
-      'Figma でのデザインに加え、各ページのマークアップ・アニメーションと、問い合わせページのバックエンドを実装',
+      '3 名のチームで、実装から公開までを担当',
+      '各ページのマークアップ・アニメーションと、問い合わせページのバックエンドを実装',
       'サーバーの設定とセキュリティ対策を行い、契約期間内にリリース',
     ],
     tech: [],
