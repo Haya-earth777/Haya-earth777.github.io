@@ -22,7 +22,7 @@ export const profile = {
   initials: 'H',
   title: 'フルスタックエンジニア',
   location: '東京都在住',
-  bio: 'Web エンジニアとして、主に SaaS の開発に携わっています。要件定義・設計から運用保守までを担当し、現在は新規機能開発のリードとして、開発メンバーのマネジメントも行っています。開発以外では、メンターや採用面接、テックブログの執筆や登壇にも取り組んできました。役者・ナレーター志望から、公的機関での勤務を経て、独学でエンジニアになりました。',
+  bio: 'Webエンジニアとして、主にSaaSの開発に携わっています。要件定義・設計から運用保守までを担当し、現在は新規機能開発のリードとして、開発メンバーのマネジメントも行っています。開発以外では、メンターや採用面接、テックブログの執筆や登壇にも取り組んできました。役者・ナレーター志望から、公的機関での勤務を経て、独学でエンジニアになりました。',
   email: 'haya.earth777.dev@gmail.com',
 } as const;
 
@@ -50,7 +50,7 @@ export const skills: SkillRow[] = [
   { label: 'インフラ', kind: 'chips', items: [{ name: 'AWS' }] },
   { label: '運用・監視', kind: 'chips', items: [{ name: 'New Relic' }, { name: 'Datadog' }, { name: 'Rollbar', mono: 'R' }] },
   {
-    label: 'AI ツール', kind: 'chips',
+    label: 'AIツール', kind: 'chips',
     items: [{ name: 'Cursor', mono: 'C' }, { name: 'Devin', mono: 'D' }, { name: 'Claude Code' }, { name: 'Codex' }, { name: 'CodeRabbit', mono: 'C' }],
   },
   {
@@ -94,66 +94,66 @@ export interface Job {
 export const jobs: Job[] = [
   {
     id: 'job-sec',
-    company: 'セキュリティ認証 SaaS 企業',
-    short: 'セキュリティ認証 SaaS',
-    role: 'Web エンジニア（新規機能開発のリード）',
+    company: 'セキュリティ認証SaaS企業',
+    short: 'セキュリティ認証SaaS',
+    role: 'Webエンジニア（新規機能開発のリード）',
     track: 'main',
     start: '2025-02',
     end: null,
-    about: 'ISMS 認証の取得・運用を支援する SaaS の自社開発',
+    about: 'ISMS認証の取得・運用を支援するSaaSの自社開発',
     achievements: [
-      '2・3 名の開発メンバーとともに新規機能開発をリードし、タスクの割り振り・進捗管理・コードレビューを担当',
+      '2・3名の開発メンバーとともに新規機能開発をリードし、タスクの割り振り・進捗管理・コードレビューを担当',
       'アーカイブ・復元機能や操作履歴機能などを、要件定義からリリースまで一貫して開発',
-      '[[16]] 万件規模のレコードを扱う処理を改善し、1 分半でタイムアウトしていたところを [[5]] 秒に短縮',
+      '[[16]]万件規模のレコードを扱う処理を改善し、1分半でタイムアウトしていたところを[[5]]秒に短縮',
       'テスト・監視体制を整備したほか、新メンバーのメンターや採用（カジュアル面談・一次面接）も担当',
     ],
     tech: ['Ruby on Rails', 'TypeScript', 'React'],
   },
   {
     id: 'job-soc',
-    company: 'Web サービスの自社開発・受託開発を行う IT 企業',
+    company: 'Webサービスの自社開発・受託開発を行うIT企業',
     short: 'セキュリティサービス',
-    role: 'Web エンジニア（業務委託）',
+    role: 'Webエンジニア（業務委託）',
     track: 'side',
     start: '2025-08',
     end: '2026-09',
     about: '大手企業向けセキュリティサービスの開発（フロントエンド中心）',
     achievements: [
-      'API の型定義とクライアントの自動生成を軸に、モック API の実装から本番 API との結合までを主導',
-      '検索条件の多い画面を設計・実装し、E2E テストで主要シナリオを自動化',
+      'APIの型定義とクライアントの自動生成を軸に、モックAPIの実装から本番APIとの結合までを主導',
+      '検索条件の多い画面を設計・実装し、E2Eテストで主要シナリオを自動化',
     ],
     tech: ['Next.js', 'TypeScript'],
   },
   {
     id: 'job-hr',
-    company: 'HR テック企業',
-    short: 'HR テック',
-    role: 'Web エンジニア（業務委託）',
+    company: 'HRテック企業',
+    short: 'HRテック',
+    role: 'Webエンジニア（業務委託）',
     track: 'side',
     start: '2025-04',
     end: '2025-06',
-    about: 'スキルシートを自動作成する SaaS の機能開発',
+    about: 'スキルシートを自動作成するSaaSの機能開発',
     achievements: [
-      'Rails の View で作られていた全 18 ステップの入力フォームを React で作り直し、画面遷移も簡略化して入力体験を改善',
-      '大型機能 3 件を契約期間内にリリース',
+      'RailsのViewで作られていた全18ステップの入力フォームをReactで作り直し、画面遷移も簡略化して入力体験を改善',
+      '大型機能3件を契約期間内にリリース',
     ],
     tech: ['Ruby on Rails', 'React'],
   },
   {
     id: 'job-lab',
-    company: '研究業界向け SaaS 企業',
-    short: '研究業界向け SaaS',
-    role: 'Web エンジニア',
+    company: '研究業界向けSaaS企業',
+    short: '研究業界向けSaaS',
+    role: 'Webエンジニア',
     track: 'main',
     start: '2023-02',
     end: '2025-02',
     chartEnd: '2025-01',
-    about: '研究者向けの購買・在庫管理 SaaS のフルスタック開発',
+    about: '研究者向けの購買・在庫管理SaaSのフルスタック開発',
     achievements: [
-      '機能追加・UI 改善・バグ修正・テスト実装まで一貫して担当',
-      'EC2 のメモリリーク対応、Lambda の言語バージョン移行、RDS / Glue / Athena を使ったデータ抽出など、インフラ・運用の改善',
-      'E2E テストの自動化と、監視体制の整備',
-      'ISMS 認証の取得に向けて社内のセキュリティ統制を整備し、取得に貢献。資格手当制度も提案',
+      '機能追加・UI改善・バグ修正・テスト実装まで一貫して担当',
+      'EC2のメモリリーク対応、Lambdaの言語バージョン移行、RDS / Glue / Athenaを使ったデータ抽出など、インフラ・運用の改善',
+      'E2Eテストの自動化と、監視体制の整備',
+      'ISMS認証の取得に向けて社内のセキュリティ統制を整備し、取得に貢献。資格手当制度も提案',
     ],
     tech: ['Ruby on Rails', 'React', 'AWS'],
   },
@@ -161,13 +161,13 @@ export const jobs: Job[] = [
     id: 'job-dx',
     company: 'コンサルティング企業',
     short: 'サイト制作',
-    role: 'Web エンジニア（業務委託）',
+    role: 'Webエンジニア（業務委託）',
     track: 'side',
     start: '2023-10',
     end: '2024-03',
     about: '企業サイトの立ち上げ',
     achievements: [
-      '3 名のチームで、実装から公開までを担当',
+      '3名のチームで、実装から公開までを担当',
       '各ページのマークアップ・アニメーションと、問い合わせページのバックエンドを実装',
       'サーバーの設定とセキュリティ対策を行い、契約期間内にリリース',
     ],
@@ -187,9 +187,9 @@ export interface Strength {
 
 export const strengths: Strength[] = [
   { icon: 'loop', title: '実装しながら、開発メンバーをまとめる', text: '自分でもコードを書きつつ、開発メンバーへのタスクの割り振りやコードレビュー、実装のサポートも担っています。' },
-  { icon: 'sparkles', title: 'AI や新しい技術を取り入れる', text: 'Claude Code や Cursor などの AI ツールを日々の開発で活用し、生産性を高める工夫を続けています。副業では本業と異なる技術スタックの現場にも参加し、新しい技術を吸収してきました。' },
-  { icon: 'users', title: 'わかりやすく伝え、職種を越えて連携する', text: 'セールスやカスタマーサクセスと話し合いながら、顧客の課題を要件に落とし込むのが得意です。説明の仕方やテキストでのやり取りを日頃から工夫しているほか、部署を越えた懇親会や Coffee Chat を主催し、話しやすい関係づくりにも取り組んでいます。' },
-  { icon: 'compass', title: '開発以外の課題にも取り組む', text: '採用面接や ISMS 認証の取得、ドメイン理解を深める勉強会の主催など、組織に必要なことであれば、開発以外にも主体的に関わってきました。' },
+  { icon: 'sparkles', title: 'AIや新しい技術を取り入れる', text: 'Claude CodeやCursorなどのAIツールを日々の開発で活用し、生産性を高める工夫を続けています。副業では本業と異なる技術スタックの現場にも参加し、新しい技術を吸収してきました。' },
+  { icon: 'users', title: '部署を越えて、信頼関係を築く', text: 'セールスやカスタマーサクセスとも日頃からコミュニケーションを取り、顧客の課題を要件に落とし込んでいます。部署を越えた懇親会やCoffee Chatを企画・主催するなど、心理的安全性の高いチームづくりを大切にしています。' },
+  { icon: 'compass', title: '開発以外の課題にも取り組む', text: '採用面接やISMS認証の取得、ドメイン理解を深める勉強会の主催など、組織に必要なことであれば、開発以外にも主体的に関わってきました。' },
 ];
 
 export interface Activity {
@@ -210,11 +210,11 @@ const kinds = {
 } as const satisfies Record<string, Activity['kind']>;
 
 export const activities: Activity[] = [
-  { when: '2026-10', kind: kinds.make, title: 'ポートフォリオサイトを制作', text: 'Astro・TypeScript・Tailwind CSS で構築し、GitHub Actions で GitHub Pages に自動デプロイ。View Transitions API など新しいブラウザ機能も活用', url: 'https://haya-earth777.github.io/' },
-  { when: '2026-06', kind: kinds.talk, title: 'エンジニア向けの共催イベントに登壇', text: 'AI 活用やフルリモートでの働き方について発表', url: 'https://note.com/secure_navi/n/n34f072153f64' },
-  { when: '2024', kind: kinds.write, title: 'Qiita のトレンドランキングで 2 位', text: '技術記事が [[120]] 以上のいいねを獲得', url: 'https://qiita.com/Haya_earth777/items/cbf8a832a31d3c2b29b6' },
+  { when: '2026-10', kind: kinds.make, title: 'ポートフォリオサイトを制作', text: 'Astro・TypeScript・Tailwind CSSで構築し、GitHub ActionsでGitHub Pagesに自動デプロイ。View Transitions APIなど新しいブラウザ機能も活用', url: 'https://haya-earth777.github.io/' },
+  { when: '2026-06', kind: kinds.talk, title: 'エンジニア向けの共催イベントに登壇', text: 'AI活用やフルリモートでの働き方について発表', url: 'https://note.com/secure_navi/n/n34f072153f64' },
+  { when: '2024', kind: kinds.write, title: 'Qiitaのトレンドランキングで2位', text: '技術記事が[[120]]以上のいいねを獲得', url: 'https://qiita.com/Haya_earth777/items/cbf8a832a31d3c2b29b6' },
   { when: '2025', kind: kinds.interview, title: 'フルリモートで働くエンジニアとしてインタビュー記事に掲載', text: 'フルリモートでの働き方について回答', url: 'https://note.com/dear_ixora4308/n/n39611eac4a98' },
-  { when: '2024', kind: kinds.talk, title: 'エンジニアコミュニティのイベントで LT', text: 'Ruby 技術者認定試験 Silver の取得について発表', url: 'https://progaku.connpass.com/event/325129/' },
+  { when: '2024', kind: kinds.talk, title: 'エンジニアコミュニティのイベントでLT', text: 'Ruby技術者認定試験Silverの取得について発表', url: 'https://progaku.connpass.com/event/325129/' },
   { when: '2022-10', kind: kinds.talk, title: 'エンジニア転職をテーマにした座談会に登壇', text: '未経験からエンジニアに転職した経験を共有', url: 'https://x.com/Haya_earth777/status/1585228761922146305' },
 ];
 
@@ -225,10 +225,10 @@ export interface Hobby {
 }
 
 export const hobbies: Hobby[] = [
-  { icon: 'ball', title: 'プロ野球観戦', text: '中日ドラゴンズファン歴 10 年' },
-  { icon: 'walk', title: 'ウォーキング', text: '毎日 1 万歩以上' },
+  { icon: 'ball', title: 'プロ野球観戦', text: '中日ドラゴンズファン歴10年' },
+  { icon: 'walk', title: 'ウォーキング', text: '毎日1万歩以上' },
   { icon: 'book', title: '漫画', text: '中学生のころから週刊少年ジャンプを購読' },
-  { icon: 'game', title: 'ゲーム', text: '人気の FPS を中心にプレイ' },
+  { icon: 'game', title: 'ゲーム', text: '人気のFPSを中心にプレイ' },
 ];
 
 export interface ContactLink extends Brand {
