@@ -131,15 +131,21 @@ if (cur && finePointer && !reduce) {
 const themeBtn = document.getElementById('theme-btn');
 const dark = matchMedia('(prefers-color-scheme: dark)');
 const current = () => root.dataset.theme || (dark.matches ? 'dark' : 'light');
-root.dataset.mode = current();
+// ブラウザの上部の色も、ページのテーマに合わせる
+const themeColors = document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]');
+const setMode = (mode: string) => {
+  root.dataset.mode = mode;
+  if (root.dataset.theme) themeColors.forEach((m) => (m.content = mode === 'dark' ? '#121311' : '#f7f6f2'));
+};
+setMode(current());
 dark.addEventListener('change', () => {
-  if (!root.dataset.theme) root.dataset.mode = current();
+  if (!root.dataset.theme) setMode(current());
 });
 themeBtn?.addEventListener('click', () => {
   const next = current() === 'dark' ? 'light' : 'dark';
   const apply = () => {
     root.dataset.theme = next;
-    root.dataset.mode = next;
+    setMode(next);
     themeBtn.classList.remove('spin');
     void themeBtn.offsetWidth;
     themeBtn.classList.add('spin');

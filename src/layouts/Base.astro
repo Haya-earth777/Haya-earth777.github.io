@@ -3,7 +3,13 @@ import '../styles/global.css';
 import IconSprite from '../components/IconSprite.astro';
 import { profile } from '../data/profile';
 
-const title = profile.name;
+interface Props {
+  /** タブに出すタイトル（省略時は名前） */
+  title?: string;
+  /** 検索エンジンに載せないページ（404 など） */
+  noindex?: boolean;
+}
+const { title = profile.name, noindex = false } = Astro.props;
 const description = `${profile.name} のポートフォリオサイト。主に SaaS の開発に携わるフルスタックエンジニアです。`;
 const site = Astro.site?.toString() ?? '/';
 const ogImage = new URL('og.png', site).toString();
@@ -24,9 +30,15 @@ const ogImage = new URL('og.png', site).toString();
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={`${title} のポートフォリオ`} />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#f7f6f2" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <!-- ブラウザの上部の色。OS の設定に合わせ、ページで切り替えたときは main.ts が書き換える -->
+    <meta name="theme-color" content="#f7f6f2" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121311" media="(prefers-color-scheme: dark)" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <!-- 404 ページなど、階層の深い URL でも読めるようにルートからのパスで書く -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&display=optional" />

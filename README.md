@@ -36,7 +36,8 @@ src/
   layouts/Base.astro   <head> とページ全体の枠
   scripts/main.ts      ページの動き
   styles/global.css    デザインの値（色・書体）と、クラスでは書けないスタイル
-public/                画像など（og.png はリンクを共有したときのカード画像）
+public/                画像など（og.png はリンクを共有したときのカード画像、favicon.ico などはタブのアイコン）
+src/pages/404.astro    存在しない URL を開いたときのページ
 og/og.html             og.png の元になる HTML
 scripts/fetch-og.mjs   活動のリンク先の OGP（タイトルと画像）をビルド前に取得する
 ```
