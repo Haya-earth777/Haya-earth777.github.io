@@ -99,6 +99,8 @@
   .reveal { transition: opacity 1s var(--ease-soft), transform 1s var(--ease-soft); }
   /* 開いた時点で画面に入っている要素は、紹介文の続きとして順に出す（読み込み時に 1 回だけ。スマホでも動く） */
   .enter { animation: fadeUp .8s var(--ease-soft) var(--enter-delay, .7s) both; }
+  /* 動きの準備ができるまで隠しておく（最初に一瞬表示されてから消えるのを防ぐ。main.ts が html に .ready を付ける） */
+  .js:not(.ready) [data-reveal] { opacity: 0; }
   /* 見出しを名前と同じく、下からせり上げる（開いた時点で見えている見出しと、PC でスクロールして表示された見出し） */
   .mask { display: block; overflow: hidden; padding-bottom: .1em; margin-bottom: -.1em; }
   .mask > span { display: inline-block; }

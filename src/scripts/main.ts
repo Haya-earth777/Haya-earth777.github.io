@@ -35,6 +35,9 @@ if (!reduce && finePointer && 'IntersectionObserver' in window) {
   });
 }
 
+// 表示用の要素の準備ができたので、隠していたものを出す（動く要素は、この時点でクラスが付いている）
+root.classList.add('ready');
+
 // 区切り線を左から引く（マウス操作の PC のみ）。最初の画面にある線は、紹介文のあとに引く
 if (!reduce && finePointer && 'IntersectionObserver' in window) {
   let first = true;

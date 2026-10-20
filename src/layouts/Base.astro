@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import IconSprite from '../components/IconSprite.astro';
 import { profile } from '../data/profile';
+import { EARLY_SCRIPT } from '../scripts/early.mjs';
 
 interface Props {
   /** タブに出すタイトル（省略時は名前） */
@@ -18,6 +19,8 @@ const ogImage = new URL('og.png', site).toString();
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
+    <!-- 動きの準備ができるまで表示用の要素を隠す目印（中身は scripts/early.mjs） -->
+    <script is:inline set:html={EARLY_SCRIPT} />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{title}</title>
     <meta name="description" content={description} />

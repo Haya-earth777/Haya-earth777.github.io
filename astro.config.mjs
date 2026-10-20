@@ -1,6 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import { createHash } from 'node:crypto';
+import { EARLY_SCRIPT } from './src/scripts/early.mjs';
+
+// <head> に直接埋め込むスクリプトは Astro が自動でハッシュを計算しないので、ここで許可する
+/** @type {`sha256-${string}`} */
+const earlyScriptHash = `sha256-${createHash('sha256').update(EARLY_SCRIPT).digest('base64')}`;
 
 export default defineConfig({
   site: 'https://haya-earth777.github.io',
@@ -27,6 +33,9 @@ export default defineConfig({
         "form-action 'none'",
         "manifest-src 'self'",
       ],
+      scriptDirective: {
+        hashes: [earlyScriptHash],
+      },
       styleDirective: {
         resources: ["'self'", 'https://fonts.googleapis.com'],
       },
