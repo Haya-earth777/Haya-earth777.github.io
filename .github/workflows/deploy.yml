@@ -27,7 +27,11 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
+          # 実行環境に入っている古い 22 系ではなく、セキュリティ修正の入った最新の 22 系を使う
+          check-latest: true
           cache: npm
+      # どのバージョンでビルドしたかを、ログを開かなくても確認できるように注釈に残す
+      - run: echo "::notice title=Node::$(node --version)"
       # package-lock.json どおりに入れ、インストール時のスクリプトは実行しない
       - run: npm ci --ignore-scripts
       # 型チェック（astro check）を通ってからビルドする
