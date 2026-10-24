@@ -1,6 +1,6 @@
-# Haya — Portfolio
+# Haya — 自己紹介サイト
 
-Haya のポートフォリオサイトです。
+Haya の自己紹介サイトです。
 
 https://haya-earth777.github.io/
 
