@@ -45,7 +45,7 @@ export type SkillRow =
 
 export const skills: SkillRow[] = [
   { label: 'バックエンド', kind: 'chips', items: [{ name: 'Ruby' }, { name: 'Ruby on Rails' }] },
-  { label: 'フロントエンド', kind: 'chips', items: [{ name: 'TypeScript' }, { name: 'React' }, { name: 'Next.js' }, { name: 'Tailwind CSS' }] },
+  { label: 'フロントエンド', kind: 'chips', items: [{ name: 'TypeScript' }, { name: 'JavaScript' }, { name: 'React' }, { name: 'Next.js' }, { name: 'Tailwind CSS' }, { name: 'jQuery' }] },
   { label: 'テスト', kind: 'chips', items: [{ name: 'RSpec', mono: 'R' }, { name: 'Vitest' }, { name: 'Playwright', mono: 'P' }, { name: 'Autify', mono: 'A' }] },
   { label: 'インフラ', kind: 'chips', items: [{ name: 'AWS' }] },
   { label: '運用・監視', kind: 'chips', items: [{ name: 'New Relic' }, { name: 'Datadog' }, { name: 'Rollbar', mono: 'R' }] },
@@ -153,7 +153,7 @@ export const jobs: Job[] = [
       '各ページのマークアップ・アニメーションと、問い合わせページのバックエンドを実装',
       'サーバーの設定とセキュリティ対策を行い、契約期間内にリリース',
     ],
-    tech: [],
+    tech: ['HTML', 'CSS', 'JavaScript', 'jQuery'],
   },
   {
     id: 'job-lab',
