@@ -107,7 +107,7 @@ export const jobs: Job[] = [
       '[[16]]万件規模のレコードを扱う処理を改善し、1分半でタイムアウトしていたところを[[5]]秒に短縮',
       'テスト体制を整備したほか、新メンバーのメンターや採用（カジュアル面談・一次面接）も担当',
     ],
-    tech: ['Ruby on Rails', 'TypeScript', 'React', 'RSpec', 'Vitest', 'Playwright'],
+    tech: ['Ruby on Rails', 'TypeScript', 'React', 'RSpec', 'Vitest', 'Playwright', 'Datadog', 'Rollbar'],
   },
   {
     id: 'job-soc',
