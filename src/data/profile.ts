@@ -45,18 +45,18 @@ export type SkillRow =
 
 export const skills: SkillRow[] = [
   { label: 'バックエンド', kind: 'chips', items: [{ name: 'Ruby' }, { name: 'Ruby on Rails' }] },
-  { label: 'フロントエンド', kind: 'chips', items: [{ name: 'TypeScript' }, { name: 'JavaScript' }, { name: 'React' }, { name: 'Next.js' }, { name: 'Tailwind CSS' }, { name: 'jQuery' }, { name: 'Storybook' }] },
+  { label: 'フロントエンド', kind: 'chips', items: [{ name: 'TypeScript' }, { name: 'JavaScript' }, { name: 'HTML' }, { name: 'CSS' }, { name: 'React' }, { name: 'Next.js' }, { name: 'Tailwind CSS' }, { name: 'jQuery' }, { name: 'Storybook' }] },
   { label: 'DB', kind: 'chips', items: [{ name: 'MySQL', mono: 'M' }] },
-  { label: 'テスト', kind: 'chips', items: [{ name: 'RSpec', mono: 'R' }, { name: 'Vitest' }, { name: 'Playwright', mono: 'P' }, { name: 'Autify', mono: 'A' }] },
+  { label: 'テスト・品質', kind: 'chips', items: [{ name: 'RSpec', mono: 'R' }, { name: 'Vitest' }, { name: 'Playwright', mono: 'P' }, { name: 'Autify', mono: 'A' }, { name: 'RuboCop' }, { name: 'ESLint' }, { name: 'Prettier' }] },
   { label: 'インフラ', kind: 'chips', items: [{ name: 'AWS' }] },
   { label: '運用・監視', kind: 'chips', items: [{ name: 'New Relic' }, { name: 'Datadog' }, { name: 'Rollbar', mono: 'R' }] },
   {
     label: 'AIツール', kind: 'chips',
-    items: [{ name: 'Cursor', mono: 'C' }, { name: 'Devin', mono: 'D' }, { name: 'Claude Code' }, { name: 'Codex' }, { name: 'CodeRabbit', mono: 'C' }],
+    items: [{ name: 'Cursor', mono: 'C' }, { name: 'Devin', mono: 'D' }, { name: 'Claude Code' }, { name: 'Codex' }, { name: 'ChatGPT' }, { name: 'Gemini' }, { name: 'CodeRabbit', mono: 'C' }],
   },
   {
     label: '開発ツール', kind: 'chips',
-    items: [{ name: 'GitHub' }, { name: 'GitHub Actions' }, { name: 'Docker' }, { name: 'Slack', mono: 'S' }, { name: 'Notion' }, { name: 'Figma' }, { name: 'Jira' }],
+    items: [{ name: 'GitHub' }, { name: 'GitHub Actions' }, { name: 'Docker' }, { name: 'Slack', mono: 'S' }, { name: 'Notion' }, { name: 'Figma' }, { name: 'Miro' }, { name: 'Jira' }],
   },
   { label: 'マネジメント', kind: 'tags', items: ['タスク・進捗管理', 'スケジュール調整', 'オンボーディング設計', 'メンタリング', '採用面接'] },
   {
