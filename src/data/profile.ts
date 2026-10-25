@@ -58,7 +58,7 @@ export const skills: SkillRow[] = [
     label: '開発ツール', kind: 'chips',
     items: [{ name: 'GitHub' }, { name: 'GitHub Actions' }, { name: 'Docker' }, { name: 'Slack', mono: 'S' }, { name: 'Notion' }, { name: 'Figma' }, { name: 'Miro' }, { name: 'Jira' }, { name: 'VS Code', mono: 'V' }, { name: 'Postman' }, { name: 'Google Workspace', mono: 'G' }],
   },
-  { label: 'マネジメント', kind: 'tags', items: ['タスク・進捗管理', 'コードレビュー', 'スケジュール調整', 'オンボーディング設計', 'メンタリング', '採用面接'] },
+  { label: 'マネジメント', kind: 'tags', items: ['タスク・進捗管理', 'コードレビュー', 'スケジュール調整', 'オンボーディング設計', 'メンタリング', 'カジュアル面談', '採用面接'] },
   {
     label: '資格', kind: 'certs',
     items: [
