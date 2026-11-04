@@ -30,11 +30,18 @@ export const formatYM = (ym: YearMonth) => {
  * Tailwind のクラスで指定する（使う可能性のあるクラスは global.css の @source inline で生成済み）。
  */
 
-/** 年表のバーの位置のクラスと、細いバーかどうか（半年以下は、名前をバーの左に出す） */
-export const barOf = (job: Job) => {
+const endColumn = (job: Job) => column(job.chartEnd ?? job.end ?? nowYM) + 1;
+
+/**
+ * 年表のバーの位置のクラスと、細いバーかどうか（半年以下は、名前をバーの左に出す）。
+ * 左に出す名前が同じ段の直前のバーと重なるとき（間が半年未満）は、名前を画面に出さず、
+ * カーソルを合わせたときのツールチップと読み上げだけにする（crowded）
+ */
+export const barOf = (job: Job, prev?: Job) => {
   const from = column(job.start);
-  const to = column(job.chartEnd ?? job.end ?? nowYM) + 1;
-  return { className: `col-start-${from} col-end-${to}`, tiny: to - from <= 6 };
+  const to = endColumn(job);
+  const tiny = to - from <= 6;
+  return { className: `col-start-${from} col-end-${to}`, tiny, crowded: tiny && !!prev && from - endColumn(prev) < 6 };
 };
 
 /** "現在" の位置（%）。Artifact 版と同じく小数第 2 位で切り捨てる */

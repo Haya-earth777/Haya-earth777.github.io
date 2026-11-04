@@ -46,9 +46,9 @@ export type SkillRow =
 export const skills: SkillRow[] = [
   { label: 'バックエンド', kind: 'chips', items: [{ name: 'Ruby' }, { name: 'Ruby on Rails' }] },
   { label: 'フロントエンド', kind: 'chips', items: [{ name: 'TypeScript' }, { name: 'JavaScript' }, { name: 'HTML' }, { name: 'CSS' }, { name: 'Sass' }, { name: 'React' }, { name: 'Next.js' }, { name: 'Tailwind CSS' }, { name: 'jQuery' }, { name: 'Vite' }, { name: 'Storybook' }] },
-  { label: 'DB', kind: 'chips', items: [{ name: 'MySQL', mono: 'M' }] },
+  { label: 'DB', kind: 'chips', items: [{ name: 'MySQL', mono: 'M' }, { name: 'Supabase' }] },
   { label: 'テスト・品質', kind: 'chips', items: [{ name: 'RSpec', mono: 'R' }, { name: 'Vitest' }, { name: 'Playwright', mono: 'P' }, { name: 'Autify', mono: 'A' }, { name: 'RuboCop' }, { name: 'ESLint' }, { name: 'Prettier' }] },
-  { label: 'インフラ', kind: 'chips', items: [{ name: 'AWS' }, { name: 'GitHub Pages' }] },
+  { label: 'インフラ', kind: 'chips', items: [{ name: 'AWS' }, { name: 'Vercel' }, { name: 'GitHub Pages' }] },
   { label: '運用・監視', kind: 'chips', items: [{ name: 'New Relic' }, { name: 'Datadog' }, { name: 'Rollbar', mono: 'R' }] },
   {
     label: 'AIツール', kind: 'chips',
@@ -109,6 +109,18 @@ export const jobs: Job[] = [
       'テスト体制を整備したほか、新メンバーのメンターや採用（カジュアル面談・一次面接）も担当',
     ],
     tech: ['Ruby on Rails', 'TypeScript', 'React', 'RSpec', 'Vitest', 'Playwright', 'Datadog', 'Rollbar'],
+  },
+  {
+    id: 'job-ai',
+    company: '研究支援スタートアップ',
+    short: '研究支援',
+    role: 'フルスタックエンジニア（業務委託）',
+    track: 'side',
+    start: '2026-11',
+    end: null,
+    about: '素材技術と企業のニーズをAIでマッチングするWebサービスの新規開発',
+    achievements: [],
+    tech: ['Next.js', 'TypeScript', 'Supabase', 'Vercel'],
   },
   {
     id: 'job-soc',

@@ -30,10 +30,10 @@ const chartLabel =
 
 // 段（本業・副業）の行番号
 const rowClass = ['row-[1]', 'row-[2]'];
-// バーが左から伸びる順番（本業の 1 本目 → 2 本目 → 副業の 1 本目 → 2 本目 → 3 本目）
+// バーが左から伸びる順番（本業の 1 本目 → 2 本目 → 副業の 1 本目 → 2 本目 → 3 本目 → 4 本目）
 const barTransition = [
   ['[transition:transform_1.1s_var(--ease-soft),filter_.2s]', '[transition:transform_1.1s_var(--ease-soft)_.2s,filter_.2s]'],
-  ['[transition:transform_1.1s_var(--ease-soft)_.4s,filter_.2s]', '[transition:transform_1.1s_var(--ease-soft)_.55s,filter_.2s]', '[transition:transform_1.1s_var(--ease-soft)_.7s,filter_.2s]'],
+  ['[transition:transform_1.1s_var(--ease-soft)_.4s,filter_.2s]', '[transition:transform_1.1s_var(--ease-soft)_.55s,filter_.2s]', '[transition:transform_1.1s_var(--ease-soft)_.7s,filter_.2s]', '[transition:transform_1.1s_var(--ease-soft)_.85s,filter_.2s]'],
 ];
 ---
 <section class="grid grid-cols-[220px_minmax(0,1fr)] gap-12 py-[88px] border-t border-line tab:grid-cols-[minmax(0,1fr)] tab:gap-7 tab:py-16" aria-labelledby="h-works" data-line>
@@ -45,7 +45,7 @@ const barTransition = [
       {tracks.map((t, i) => (
         <div class:list={['col-[2] grid grid-cols-[repeat(48,minmax(0,1fr))]', rowClass[i]]}>
           {t.jobs.map((j, k) => {
-            const bar = barOf(j);
+            const bar = barOf(j, t.jobs[k - 1]);
             return (
               <a
                 class:list={[
@@ -56,10 +56,11 @@ const barTransition = [
                   bar.className,
                 ]}
                 href={`#${j.id}`}
+                title={bar.crowded ? j.short : undefined}
               >
                 <span class:list={[
                   'whitespace-nowrap text-ellipsis',
-                  bar.tiny ? 'absolute right-full pr-2 text-accent overflow-visible' : 'px-2.5 overflow-hidden sp:px-1.5',
+                  bar.crowded ? 'sr-only' : bar.tiny ? 'absolute right-full pr-2 text-accent overflow-visible' : 'px-2.5 overflow-hidden sp:px-1.5',
                 ]}>{j.short}</span>
               </a>
             );
@@ -83,7 +84,7 @@ const barTransition = [
           <div class="grid gap-2.5 min-w-0">
             <h3 class="m-0 text-[18px] font-bold leading-[1.5]">{j.company}<small class="block text-[13.5px] font-medium text-muted">{j.role}</small></h3>
             <p class="m-0 text-[15px]">{j.about}</p>
-            <ul class="m-0 pl-[1.1em] grid gap-1 text-[14.5px] text-muted marker:text-accent">{j.achievements.map((a) => <li>{splitCount(a).map((p) => (typeof p === 'number' ? <span class="count" data-count={p}>{p}</span> : p))}</li>)}</ul>
+            {j.achievements.length > 0 && <ul class="m-0 pl-[1.1em] grid gap-1 text-[14.5px] text-muted marker:text-accent">{j.achievements.map((a) => <li>{splitCount(a).map((p) => (typeof p === 'number' ? <span class="count" data-count={p}>{p}</span> : p))}</li>)}</ul>}
             {j.tech.length > 0 && <p class="mt-1 mb-0 mx-0 flex flex-wrap gap-1.5">{j.tech.map((name) => <BrandChip brand={brand(name)} size="sm" />)}</p>}
           </div>
         </li>
