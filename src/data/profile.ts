@@ -190,7 +190,6 @@ export const jobs: Job[] = [
 
 /** 年表の範囲（この年の1月から、4年分） */
 export const chartStartYear = 2023;
-export const chartYears = 4;
 
 export interface Strength {
   icon: LineIcon;

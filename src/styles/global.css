@@ -12,8 +12,9 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 
 /* 年表のバーの位置は、職歴データから計算してクラス名を作るため、使う可能性があるものを先に生成しておく */
-@source inline("col-start-{1..48} col-end-{2..49}");
-@source inline("left-[2.08%] before:left-[2.08%] left-[4.16%] before:left-[4.16%] left-[6.25%] before:left-[6.25%] left-[8.33%] before:left-[8.33%] left-[10.41%] before:left-[10.41%] left-[12.5%] before:left-[12.5%] left-[14.58%] before:left-[14.58%] left-[16.66%] before:left-[16.66%] left-[18.75%] before:left-[18.75%] left-[20.83%] before:left-[20.83%] left-[22.91%] before:left-[22.91%] left-[25%] before:left-[25%] left-[27.08%] before:left-[27.08%] left-[29.16%] before:left-[29.16%] left-[31.25%] before:left-[31.25%] left-[33.33%] before:left-[33.33%] left-[35.41%] before:left-[35.41%] left-[37.5%] before:left-[37.5%] left-[39.58%] before:left-[39.58%] left-[41.66%] before:left-[41.66%] left-[43.75%] before:left-[43.75%] left-[45.83%] before:left-[45.83%] left-[47.91%] before:left-[47.91%] left-[50%] before:left-[50%] left-[52.08%] before:left-[52.08%] left-[54.16%] before:left-[54.16%] left-[56.25%] before:left-[56.25%] left-[58.33%] before:left-[58.33%] left-[60.41%] before:left-[60.41%] left-[62.5%] before:left-[62.5%] left-[64.58%] before:left-[64.58%] left-[66.66%] before:left-[66.66%] left-[68.75%] before:left-[68.75%] left-[70.83%] before:left-[70.83%] left-[72.91%] before:left-[72.91%] left-[75%] before:left-[75%] left-[77.08%] before:left-[77.08%] left-[79.16%] before:left-[79.16%] left-[81.25%] before:left-[81.25%] left-[83.33%] before:left-[83.33%] left-[85.41%] before:left-[85.41%] left-[87.5%] before:left-[87.5%] left-[89.58%] before:left-[89.58%] left-[91.66%] before:left-[91.66%] left-[93.75%] before:left-[93.75%] left-[95.83%] before:left-[95.83%] left-[97.91%] before:left-[97.91%] left-[100%] before:left-[100%]");
+@source inline("col-start-{1..96} col-end-{2..97}");
+@source inline("grid-cols-[repeat({48,60,72,84,96},minmax(0,1fr))]");
+@source inline("{sp:,}sr-only {sp:,}invisible");
 
 @theme {
   --color-bg: #f7f6f2;

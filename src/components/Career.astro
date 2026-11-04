@@ -1,7 +1,7 @@
 ---
 import { splitCount } from '../lib/count';
 import { jobs, skills, type Brand } from '../data/profile';
-import { barOf, formatYM, nowLabelClass, nowLineClass, yearLabels } from '../lib/timeline';
+import { barOf, formatYM, gridColsClass, nowColClass, yearLabels } from '../lib/timeline';
 import BrandChip from './BrandChip.astro';
 import SectionHead from './SectionHead.astro';
 
@@ -41,9 +41,9 @@ const barTransition = [
   <div>
     <div class="group/chart grid grid-cols-[36px_minmax(0,1fr)] grid-rows-[30px_30px_20px] gap-x-3.5 gap-y-2 mb-10 sp:grid-cols-[28px_minmax(0,1fr)] sp:gap-2" data-reveal role="img" aria-label={chartLabel}>
       {tracks.map((t, i) => <span class:list={['text-[12px] font-bold text-muted self-center', rowClass[i]]}>{t.label}</span>)}
-      <div class="col-[2] row-[1/3] bg-[repeating-linear-gradient(90deg,var(--color-line)_0_1px,transparent_1px_25%)]" aria-hidden="true"></div>
+      <div class:list={['col-[2] row-[1/3] grid', gridColsClass]} aria-hidden="true">{yearLabels.map((y) => <span class:list={['row-[1] [border-left:1px_solid_var(--color-line)]', y.className]}></span>)}</div>
       {tracks.map((t, i) => (
-        <div class:list={['col-[2] grid grid-cols-[repeat(48,minmax(0,1fr))]', rowClass[i]]}>
+        <div class:list={['col-[2] grid', gridColsClass, rowClass[i]]}>
           {t.jobs.map((j, k) => {
             const bar = barOf(j, t.jobs[k - 1]);
             return (
@@ -56,21 +56,24 @@ const barTransition = [
                   bar.className,
                 ]}
                 href={`#${j.id}`}
-                title={bar.crowded ? j.short : undefined}
+                title={bar.labelHide ? j.short : undefined}
               >
                 <span class:list={[
                   'whitespace-nowrap text-ellipsis',
-                  bar.crowded ? 'sr-only' : bar.tiny ? 'absolute right-full pr-2 text-accent overflow-visible' : 'px-2.5 overflow-hidden sp:px-1.5',
+                  bar.tiny ? 'absolute right-full pr-2 text-accent overflow-visible' : 'px-2.5 overflow-hidden sp:px-1.5',
+                  bar.labelHide,
                 ]}>{j.short}</span>
               </a>
             );
           })}
         </div>
       ))}
-      <div class:list={["col-[2] row-[1/4] relative pointer-events-none before:content-[''] before:absolute before:top-[-6px] before:bottom-4 before:[border-left:1.5px_dashed_var(--color-fg)] before:opacity-50", nowLineClass]} aria-hidden="true"><span class:list={['now-dot', nowLabelClass]}></span></div>
-      <div class="col-[2] row-[3] relative text-[11.5px] text-muted tabular-nums" aria-hidden="true">
-        {yearLabels.map((y) => <span class:list={['absolute top-0 whitespace-nowrap', y.className]}>{y.year}</span>)}
-        <span class:list={['absolute top-0 whitespace-nowrap -translate-x-1/2 text-fg font-bold', nowLabelClass]}>現在</span>
+      <div class:list={['col-[2] row-[1/4] grid pointer-events-none', gridColsClass]} aria-hidden="true">
+        <span class:list={["row-[1] relative before:content-[''] before:absolute before:left-full before:top-[-6px] before:bottom-4 before:[border-left:1.5px_dashed_var(--color-fg)] before:opacity-50", nowColClass]}><span class="now-dot left-full"></span></span>
+      </div>
+      <div class:list={['col-[2] row-[3] grid text-[11.5px] text-muted tabular-nums', gridColsClass]} aria-hidden="true">
+        {yearLabels.map((y) => <span class:list={['row-[1] whitespace-nowrap', y.className, y.labelHide]}>{y.year}</span>)}
+        <span class:list={['row-[1] relative', nowColClass]}><span class="absolute top-0 left-full whitespace-nowrap -translate-x-1/2 text-fg font-bold">現在</span></span>
       </div>
     </div>
     <ol class="list-none m-0 p-0 border-t border-fg" data-reveal data-line>
