@@ -44,7 +44,7 @@ export type SkillRow =
   | { label: string; kind: 'certs'; items: string[] };
 
 export const skills: SkillRow[] = [
-  { label: 'バックエンド', kind: 'chips', items: [{ name: 'Ruby' }, { name: 'Ruby on Rails' }] },
+  { label: 'バックエンド', kind: 'chips', items: [{ name: 'Ruby' }, { name: 'Ruby on Rails' }, { name: 'TypeScript' }] },
   { label: 'フロントエンド', kind: 'chips', items: [{ name: 'TypeScript' }, { name: 'JavaScript' }, { name: 'HTML' }, { name: 'CSS' }, { name: 'Sass' }, { name: 'React' }, { name: 'Next.js' }, { name: 'Tailwind CSS' }, { name: 'jQuery' }, { name: 'Vite' }, { name: 'Storybook' }] },
   { label: 'DB', kind: 'chips', items: [{ name: 'MySQL', mono: 'M' }, { name: 'Supabase' }] },
   { label: 'テスト・品質', kind: 'chips', items: [{ name: 'RSpec', mono: 'R' }, { name: 'Vitest' }, { name: 'Playwright', mono: 'P' }, { name: 'Autify', mono: 'A' }, { name: 'RuboCop' }, { name: 'ESLint' }, { name: 'Prettier' }] },
