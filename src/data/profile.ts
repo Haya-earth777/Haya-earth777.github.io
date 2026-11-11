@@ -52,7 +52,7 @@ export const skills: SkillRow[] = [
   { label: '運用・監視', kind: 'chips', items: [{ name: 'New Relic' }, { name: 'Datadog' }, { name: 'Rollbar', mono: 'R' }] },
   {
     label: 'AIツール', kind: 'chips',
-    items: [{ name: 'Cursor', mono: 'C' }, { name: 'Devin', mono: 'D' }, { name: 'Claude Code' }, { name: 'Codex' }, { name: 'ChatGPT' }, { name: 'Gemini' }, { name: 'CodeRabbit', mono: 'C' }],
+    items: [{ name: 'Cursor', mono: 'C' }, { name: 'Devin', mono: 'D' }, { name: 'Claude Code' }, { name: 'Codex' }, { name: 'ChatGPT' }, { name: 'Gemini' }, { name: 'CodeRabbit', mono: 'C' }, { name: 'Orca', mono: 'O' }, { name: 'Aqua Voice', mono: 'A' }],
   },
   {
     label: '開発ツール', kind: 'chips',
@@ -114,12 +114,15 @@ export const jobs: Job[] = [
     id: 'job-ai',
     company: '研究支援スタートアップ',
     short: '研究支援',
-    role: 'フルスタックエンジニア（業務委託）',
+    role: 'フルスタックエンジニア（業務委託・開発リード）',
     track: 'side',
     start: '2026-11',
     end: null,
     about: '素材技術と企業のニーズをAIでマッチングするWebサービスの新規開発',
-    achievements: [],
+    achievements: [
+      'リリース間もないプロダクトに、ただ一人のエンジニアとして参画し、画面からデータベースまで機能開発を担当',
+      'タスク管理やテストの仕組みなど、開発の進め方も整備',
+    ],
     tech: ['Next.js', 'TypeScript', 'Supabase', 'Vercel'],
   },
   {
